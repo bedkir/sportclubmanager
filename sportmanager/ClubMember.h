@@ -14,11 +14,14 @@ private:
 public:
 	ClubMember();
 	ClubMember(string, string, vector<Group>);
-	ClubMember(ClubMember &);
+	ClubMember(const ClubMember &);
 	virtual ~ClubMember();
 
 	inline vector<Group> getGroups() const;
 
 	inline ClubMember& setGroups(vector<Group>&);
+
+	bool SignIn(string, string) override;
+	bool SignUp(string, string, string) override;
 };
 

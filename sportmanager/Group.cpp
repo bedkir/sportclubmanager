@@ -4,7 +4,7 @@ Group::Group()
 {
 }
 
-Group::Group(string sportName, User coach, vector<User>members)
+Group::Group(string sportName, Coach coach, vector<User>members)
 {
 	this->sportName = sportName;
 	this->coach = coach;
@@ -28,7 +28,12 @@ inline string Group::getSportName() const
 	return this->sportName;
 }
 
-inline User Group::getCoach() const
+inline string Group::getGroupName() const
+{
+	return this->groupName;
+}
+
+inline Coach Group::getCoach() const
 {
 	return this->coach;
 }
@@ -44,7 +49,13 @@ inline Group& Group::setSportName(string sportName)
 	return *this;
 }
 
-inline Group& Group::setCoach(User& coach)
+inline Group& Group::setGroupName(string groupName)
+{
+	this->groupName = groupName;
+	return *this;
+}
+
+inline Group& Group::setCoach(Coach& coach)
 {
 	this->coach = coach;
 	return *this;

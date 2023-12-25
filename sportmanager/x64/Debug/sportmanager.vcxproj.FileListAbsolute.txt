@@ -1,0 +1,4 @@
+D:\OOP\sportclubmanager\sportmanager\x64\Debug\sportmanager.vcxproj.AssemblyReference.cache
+D:\OOP\sportclubmanager\sportmanager\x64\Debug\sportmanager.MyForm.resources
+D:\OOP\sportclubmanager\sportmanager\x64\Debug\sportmanager.vcxproj.GenerateResource.cache
+D:\OOP\sportclubmanager\sportmanager\x64\Debug\sportmanager.exe

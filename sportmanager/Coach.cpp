@@ -11,7 +11,7 @@ Coach::Coach(string login, string password, vector<Group> group)
 	this->groups = group;
 }
 
-Coach::Coach(Coach& coach)
+Coach::Coach(const Coach& coach)
 {
 	this->login = coach.getLogin();
 	this->password = coach.getPassword();
@@ -40,4 +40,14 @@ Coach& Coach::operator=(const Coach& otherCoach)
 	this->login = otherCoach.getLogin();
 	this->password = otherCoach.getPassword();
 	return *this;
+}
+
+bool Coach::SignIn(string, string)
+{
+	return false;
+}
+
+bool Coach::SignUp(string, string, string)
+{
+	return false;
 }

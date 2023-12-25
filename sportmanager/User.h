@@ -19,5 +19,7 @@ public:
 	inline User& setLogin(string);
 	inline User& setPassword(string);
 
+	virtual bool SignIn(string, string) = 0;
+	virtual bool SignUp(string, string, string) = 0;
 };
 

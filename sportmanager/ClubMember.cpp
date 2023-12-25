@@ -11,7 +11,7 @@ ClubMember::ClubMember(string login, string password, vector<Group> groups)
 	this->groups = groups;
 }
 
-ClubMember::ClubMember(ClubMember& member)
+ClubMember::ClubMember(const ClubMember& member)
 {
 	this->login = member.getLogin();
 	this->password = member.getPassword();
@@ -32,4 +32,14 @@ inline ClubMember& ClubMember::setGroups(vector<Group>& groups)
 {
 	this->groups = groups;
 	return *this;
+}
+
+bool ClubMember::SignIn(string, string)
+{
+	return false;
+}
+
+bool ClubMember::SignUp(string, string, string)
+{
+	return false;
 }
