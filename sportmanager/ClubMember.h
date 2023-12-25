@@ -1,6 +1,6 @@
 #pragma once
 #include "User.h"
-#include "Sport.h"
+#include "Group.h"
 
 #include <iostream>
 #include <vector>
@@ -9,15 +9,16 @@ using namespace std;
 class ClubMember : public User
 {
 private:
-	vector<Sport> sports;
+	vector<Group> groups;
 
 public:
 	ClubMember();
-	ClubMember(string, string, vector<Sport>);
+	ClubMember(string, string, vector<Group>);
 	ClubMember(ClubMember &);
+	virtual ~ClubMember();
 
-	inline vector<Sport> getSports() const;
+	inline vector<Group> getGroups() const;
 
-	inline ClubMember& setSports(vector<Sport>&);
+	inline ClubMember& setGroups(vector<Group>&);
 };
 

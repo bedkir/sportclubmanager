@@ -11,7 +11,7 @@ public:
 	User();
 	User(string, string);
 	User(const User &);
-	~User();
+	virtual ~User();
 
 	inline string getLogin() const;
 	inline string getPassword() const;
