@@ -35,7 +35,13 @@ Class sportmanager.CoachAddGroup: AutoLayout, AnsiClass, Class, Public, BeforeFi
     System.Windows.Forms.Form prevForm : Public
 Class sportmanager.CoachEditGroup: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(System.Windows.Forms.Form, System.String): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Windows.Forms.Form prevForm : Public
+    System.String groupName : Public
+  Methods:
+    BuildButtons(): PrivateScope, Public, HideBySig
+    SetActive(Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig
 Class sportmanager.CoachMain: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

@@ -319,8 +319,6 @@ void Coach::deleteMember(string groupName, string login, string name, string sur
 	ifstream T;
 	T.open(login + ".txt", ofstream::out | ofstream::app);
 
-	string line;
-
 	while (true)
 	{
 		getline(T, line);

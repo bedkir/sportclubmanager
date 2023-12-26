@@ -7,3 +7,13 @@ D:\OOP\sportclubmanager\sportmanager\x64\Debug\sportmanager.SignUp.resources
 D:\OOP\sportclubmanager\sportmanager\x64\Debug\sportmanager.vcxproj.GenerateResource.cache
 D:\OOP\sportclubmanager\sportmanager\x64\Debug\sportmanager.exe
 D:\OOP\sportclubmanager\sportmanager\x64\Debug\sportmanager.CoachEditGroup.resources
+C:\Users\pando\Desktop\git repos\sportclubmanager\sportmanager\x64\Debug\sportmanager.vcxproj.AssemblyReference.cache
+C:\Users\pando\Desktop\git repos\sportclubmanager\sportmanager\x64\Debug\sportmanager.vcxproj.SuggestedBindingRedirects.cache
+C:\Users\pando\Desktop\git repos\sportclubmanager\sportmanager\x64\Debug\sportmanager.CoachAddGroup.resources
+C:\Users\pando\Desktop\git repos\sportclubmanager\sportmanager\x64\Debug\sportmanager.CoachEditGroup.resources
+C:\Users\pando\Desktop\git repos\sportclubmanager\sportmanager\x64\Debug\sportmanager.CoachMain.resources
+C:\Users\pando\Desktop\git repos\sportclubmanager\sportmanager\x64\Debug\sportmanager.LogIn.resources
+C:\Users\pando\Desktop\git repos\sportclubmanager\sportmanager\x64\Debug\sportmanager.MyForm.resources
+C:\Users\pando\Desktop\git repos\sportclubmanager\sportmanager\x64\Debug\sportmanager.SignUp.resources
+C:\Users\pando\Desktop\git repos\sportclubmanager\sportmanager\x64\Debug\sportmanager.vcxproj.GenerateResource.cache
+C:\Users\pando\Desktop\git repos\sportclubmanager\sportmanager\x64\Debug\sportmanager.exe
