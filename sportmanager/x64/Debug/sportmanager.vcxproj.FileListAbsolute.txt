@@ -10,3 +10,5 @@ C:\Users\pando\Desktop\git repos\sportclubmanager\sportmanager\x64\Debug\sportma
 D:\OOP\sportclubmanager\sportmanager\x64\Debug\sportmanager.LogIn.resources
 C:\Users\pando\Desktop\git repos\sportclubmanager\sportmanager\x64\Debug\sportmanager.LogIn.resources
 D:\OOP\sportclubmanager\sportmanager\x64\Debug\sportmanager.SignUp.resources
+D:\OOP\sportclubmanager\sportmanager\x64\Debug\sportmanager.CoachMain.resources
+D:\OOP\sportclubmanager\sportmanager\x64\Debug\sportmanager.CoachAddGroup.resources

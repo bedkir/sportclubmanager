@@ -2,6 +2,8 @@
 
 #include "Coach.h"
 #include "ClubMember.h"
+#include "CoachMain.h"
+#include "ClubMemberMain.h"
 
 #include <string>
 #include <msclr/marshal.h>
@@ -218,6 +220,23 @@ namespace sportmanager {
 		if (!result)
 		{
 			this->labelWarning->Visible = true;
+		}
+		else
+		{
+			if (this->radioButtonMember->Checked)
+			{
+				this->Hide();
+				ClubMemberMain^ form = gcnew ClubMemberMain();
+				form->ShowDialog();
+				this->Close();
+			}
+			else
+			{
+				this->Hide();
+				CoachMain^ form = gcnew CoachMain();
+				form->ShowDialog();
+				this->Close();
+			}
 		}
 	}
 };
