@@ -1,5 +1,9 @@
 #include "ClubMember.h"
 
+#include <fstream>
+#include <conio.h>
+#include <string>
+
 ClubMember::ClubMember()
 {
 }
@@ -49,10 +53,89 @@ inline ClubMember& ClubMember::setGroups(vector<string>& groups)
 
 bool ClubMember::SignIn(string login, string password)
 {
+	string pswrd;
+
+	if (!containsMember(login))
+		return false;
+
+	ifstream F;
+	F.open(login + ".txt", ifstream::app);
+
+
+	getline(F, pswrd);
+	getline(F, pswrd);
+
+	F.close();
+
+	if (pswrd != password)
+		return false;
+
+	this->login = login;
+	this->password = password;
+
+	return true;
+}
+
+
+bool containsMember(string login)
+{
+	ifstream F;
+	F.open("Members.txt", ifstream::app);
+
+
+	string line;
+
+	while (getline(F, line))
+		if (line == login)
+		{
+			F.close();
+			return true;
+		}
+
+	F.close();
 	return false;
 }
 
+
 bool ClubMember::SignUp(string login, string password, string secPassword, string name, string surname, int birthYear)
 {
-	return false;
+	if (password != secPassword)
+		return false;
+
+	ifstream S;
+	S.open("Coaches.txt", ifstream::app);
+
+	string line;
+
+	while (getline(S, line))
+		if (line == login)
+		{
+			S.close();
+			return false;
+		}
+
+	if (containsMember(login))
+		return false;
+
+	this->login = login;
+	this->password = password;
+
+
+	ofstream F;
+	F.open(login + ".txt", ofstream::out | ofstream::app);
+
+	F << login << endl << password << endl << name
+	  << endl << surname << endl << birthYear << endl;
+
+	F.close();
+
+
+	ofstream T;
+	T.open("Members.txt", ofstream::out | ofstream::app);
+
+	T << login << endl;
+
+	T.close();
+
+	return true;
 }
