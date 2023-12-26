@@ -121,16 +121,44 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ClubMember.cpp" />
+    <ClCompile Include="ClubMemberGroup.cpp" />
+    <ClCompile Include="ClubMemberJoin.cpp" />
+    <ClCompile Include="ClubMemberMain.cpp" />
     <ClCompile Include="Coach.cpp" />
+    <ClCompile Include="CoachAddGroup.cpp" />
+    <ClCompile Include="CoachEditGroup.cpp" />
+    <ClCompile Include="CoachMain.cpp" />
     <ClCompile Include="Group.cpp" />
+    <ClCompile Include="LogIn.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="Registration.cpp" />
     <ClCompile Include="User.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ClubMember.h" />
+    <ClInclude Include="ClubMemberGroup.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ClubMemberJoin.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ClubMemberMain.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Coach.h" />
+    <ClInclude Include="CoachAddGroup.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="CoachEditGroup.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="CoachMain.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Group.h" />
+    <ClInclude Include="LogIn.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Registration.h">
       <FileType>CppForm</FileType>
     </ClInclude>
