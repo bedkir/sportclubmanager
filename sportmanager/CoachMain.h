@@ -162,7 +162,11 @@ namespace sportmanager {
 
 	void GroupButton_Click(System::Object^ sender, System::EventArgs^ e)
 	{
+		Button^ thisButton = safe_cast<Button^>(sender);
 
+		this->Hide();
+		CoachEditGroup^ form = gcnew CoachEditGroup(this, thisButton->Text);
+		form->ShowDialog();
 	}
 
 	private: System::Void CoachMain_Activated(System::Object^ sender, System::EventArgs^ e) 
