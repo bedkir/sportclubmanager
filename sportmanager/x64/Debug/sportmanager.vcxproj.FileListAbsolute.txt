@@ -1,0 +1,8 @@
+D:\OOP\sportclubmanager\sportmanager\x64\Debug\sportmanager.vcxproj.AssemblyReference.cache
+D:\OOP\sportclubmanager\sportmanager\x64\Debug\sportmanager.CoachAddGroup.resources
+D:\OOP\sportclubmanager\sportmanager\x64\Debug\sportmanager.CoachMain.resources
+D:\OOP\sportclubmanager\sportmanager\x64\Debug\sportmanager.LogIn.resources
+D:\OOP\sportclubmanager\sportmanager\x64\Debug\sportmanager.MyForm.resources
+D:\OOP\sportclubmanager\sportmanager\x64\Debug\sportmanager.SignUp.resources
+D:\OOP\sportclubmanager\sportmanager\x64\Debug\sportmanager.vcxproj.GenerateResource.cache
+D:\OOP\sportclubmanager\sportmanager\x64\Debug\sportmanager.exe

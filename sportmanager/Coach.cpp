@@ -157,13 +157,13 @@ void Coach::createGroup(string sportName)
 	ofstream F;
 	F.open(this->login + ".txt", ofstream::out | ofstream::app);
 
-	F << "group" + to_string(Group::getAmountOfGroups()) << endl;
+	F << "group" + to_string(Group::getAmountOfGroups() + 1) << endl;
 
 	F.close();
 
 
 	ofstream T;
-	T.open("group" + to_string(Group::getAmountOfGroups()) + ".txt", ofstream::out | ofstream::app);
+	T.open("group" + to_string(Group::getAmountOfGroups() + 1) + ".txt", ofstream::out | ofstream::app);
 
 	T << sportName << endl << this->name + " " + this->surname
 	  << endl; // for members -> name surname (login)
@@ -173,10 +173,12 @@ void Coach::createGroup(string sportName)
 	ofstream S;
 	S.open("groups.txt", ofstream::out | ofstream::app);
 
-	S << "group" + to_string(Group::getAmountOfGroups())
+	S << "group" + to_string(Group::getAmountOfGroups() + 1)
 		<< endl;
 
 	S.close();
+
+	Group::setAmountOfGroups();
 }
 
 

@@ -154,7 +154,7 @@ namespace sportmanager {
 		this->Hide();
 		CoachAddGroup^ form = gcnew CoachAddGroup(this);
 		form->ShowDialog();
-		this->Close();
+		//this->Close();
 		//delete this;
 	}
 

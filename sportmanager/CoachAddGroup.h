@@ -29,7 +29,7 @@ namespace sportmanager {
 			
 			this->prevForm = form;
 
-			this->labelGroupNumber->Text = Group::getAmountOfGroups().ToString();
+			this->labelGroupNumber->Text = (Group::getAmountOfGroups() + 1).ToString();
 		}
 
 	protected:
@@ -175,7 +175,7 @@ namespace sportmanager {
 
 		this->Hide();
 		//CoachAddGroup^ form = gcnew CoachAddGroup(this);
-		prevForm->ShowDialog();
+		prevForm->Show();
 		this->Close();
 	}
 };
