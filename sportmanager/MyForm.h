@@ -61,6 +61,7 @@ namespace sportmanager {
 			// 
 			// buttonLogIn
 			// 
+			this->buttonLogIn->CausesValidation = false;
 			this->buttonLogIn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->buttonLogIn->Location = System::Drawing::Point(187, 95);

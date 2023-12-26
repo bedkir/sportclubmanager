@@ -1,5 +1,6 @@
   sportmanager.LogIn.resources - Embedded, ContainedInManifestFile, 
   sportmanager.MyForm.resources - Embedded, ContainedInManifestFile, 
+  sportmanager.SignUp.resources - Embedded, ContainedInManifestFile, 
 ImageRuntimeVersion: v4.0.30319
 Assembly sportmanager, Version=0.0.*, Culture=Инвариантный язык (Инвариантная страна): 
 	hash=SHA1, flags=PublicKey

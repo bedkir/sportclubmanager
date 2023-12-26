@@ -1,1 +1,6 @@
-﻿  sportmanager.vcxproj -> D:\OOP\sportclubmanager\sportmanager\x64\Debug\sportmanager.exe
+﻿  MyForm.cpp
+D:\OOP\sportclubmanager\sportmanager\MyForm.cpp(6,1): warning C4829: Возможно, неправильные параметры функции main. Рекомендуемый вариант - "int main(Platform::Array<Platform::String^>^ argv)"
+  SignUp.cpp
+  Создание кода...
+  ClubMember.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
+  sportmanager.vcxproj -> D:\OOP\sportclubmanager\sportmanager\x64\Debug\sportmanager.exe
