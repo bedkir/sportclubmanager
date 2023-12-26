@@ -124,12 +124,16 @@
     <ClCompile Include="Coach.cpp" />
     <ClCompile Include="Group.cpp" />
     <ClCompile Include="MyForm.cpp" />
+    <ClCompile Include="Registration.cpp" />
     <ClCompile Include="User.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ClubMember.h" />
     <ClInclude Include="Coach.h" />
     <ClInclude Include="Group.h" />
+    <ClInclude Include="Registration.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="User.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
