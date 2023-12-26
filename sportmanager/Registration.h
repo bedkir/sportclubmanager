@@ -48,11 +48,17 @@ namespace sportmanager {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->components = gcnew System::ComponentModel::Container();
-			this->Size = System::Drawing::Size(300,300);
-			this->Text = L"Registration";
-			this->Padding = System::Windows::Forms::Padding(0);
+			this->SuspendLayout();
+			// 
+			// Registration
+			// 
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->ClientSize = System::Drawing::Size(299, 261);
+			this->Name = L"Registration";
+			this->Text = L"Registration";
+			this->ResumeLayout(false);
+
 		}
 #pragma endregion
 	};
