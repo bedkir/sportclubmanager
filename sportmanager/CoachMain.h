@@ -144,6 +144,7 @@ namespace sportmanager {
 			this->Controls->Add(this->label1);
 			this->Name = L"CoachMain";
 			this->Text = L"CoachMain";
+			this->Activated += gcnew System::EventHandler(this, &CoachMain::CoachMain_Activated);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -162,5 +163,10 @@ namespace sportmanager {
 	{
 
 	}
-	};
+
+private: System::Void CoachMain_Activated(System::Object^ sender, System::EventArgs^ e) 
+{
+	BuildButtons();
+}
+};
 }
