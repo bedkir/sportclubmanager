@@ -12,7 +12,7 @@ private:
 
 public:
 	Coach();
-	Coach(string, string, vector<string>);
+	Coach(string, string, string, string, vector<string>);
 	Coach(const Coach &);
 	virtual ~Coach();
 
@@ -23,6 +23,6 @@ public:
 	Coach& operator=(const Coach&);
 
 	bool SignIn(string, string) override;
-	bool SignUp(string, string, string) override;
+	bool SignUp(string, string, string, string, string);
 };
 

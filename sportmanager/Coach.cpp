@@ -4,17 +4,17 @@ Coach::Coach()
 {
 }
 
-Coach::Coach(string login, string password, vector<string> group)
+Coach::Coach(string login, string password, string name, string surname, vector<string> group)
 {
 	this->login = login;
 	this->password = password;
+	this->name = name;
+	this->surname = surname;
 	this->groups = group;
 }
 
-Coach::Coach(const Coach& coach)
+Coach::Coach(const Coach& coach) : User(coach)
 {
-	this->login = coach.getLogin();
-	this->password = coach.getPassword();
 	this->groups = coach.getGroups();
 }
 
@@ -42,12 +42,12 @@ Coach& Coach::operator=(const Coach& otherCoach)
 	return *this;
 }
 
-bool Coach::SignIn(string, string)
+bool Coach::SignIn(string login, string password)
 {
 	return false;
 }
 
-bool Coach::SignUp(string, string, string)
+bool Coach::SignUp(string login, string password, string secPassword, string name, string surname)
 {
 	return false;
 }
