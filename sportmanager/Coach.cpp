@@ -275,10 +275,69 @@ vector<string> Coach::getInfoOfMember(string login)
 	for (int i = 0; i < 5; i++)
 	{
 		getline(F, line);
-		result.push_back(line);
+		if (i != 1)
+			result.push_back(line);
 	}
 
 	F.close();
 
 	return result;
+}
+
+void Coach::deleteMember(string groupName, string login, string name, string surname)
+{
+	vector<string> temp;
+
+	//Group file
+	ifstream F;
+	F.open(groupName + ".txt", ofstream::out | ofstream::app);
+
+	string line;
+
+	while (true)
+	{
+		getline(F, line);
+		temp.push_back(line);
+		if (line == name + " " + surname + " (" + login + ")")
+			temp.pop_back();
+		else if (line == "") break;
+	}
+
+	F.close();
+
+	ofstream S;
+	S.open(groupName + ".txt", ofstream::out | ofstream::app);
+
+	for (int i = 0; i < temp.size(); i++)
+	S << temp.at(i) << endl;
+
+	S.close();
+	temp.clear();
+
+	//Member file
+
+	ifstream T;
+	T.open(login + ".txt", ofstream::out | ofstream::app);
+
+	string line;
+
+	while (true)
+	{
+		getline(T, line);
+		temp.push_back(line);
+		if (line == groupName)
+			temp.pop_back();
+		else if (line == "") break;
+	}
+
+	T.close();
+
+	ofstream K;
+	K.open(login + ".txt", ofstream::out | ofstream::app);
+
+	for (int i = 0; i < temp.size(); i++)
+		K << temp.at(i) << endl;
+
+	K.close();
+	temp.clear();
 }

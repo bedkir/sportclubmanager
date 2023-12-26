@@ -23,5 +23,6 @@ public:
 	vector<string> searchMembers(string, string);
 	vector<string> sortMembers(string);
 	vector<string> getInfoOfMember(string);
+	void deleteMember(string);
 };
 
