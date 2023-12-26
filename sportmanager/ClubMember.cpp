@@ -1,5 +1,4 @@
 #include "ClubMember.h"
-#include "Group.h"
 
 #include <fstream>
 #include <string>
@@ -103,7 +102,7 @@ bool ClubMember::SignIn(string login, string password)
 
 	T.close();
 
-	this->getGroupsListfromFile();
+	this->getGroupsListFromFile();
 
 	return true;
 }
@@ -141,7 +140,7 @@ bool ClubMember::SignUp(string login, string password, string secPassword, strin
 	F.open(login + ".txt", ofstream::out | ofstream::app);
 
 	F << login << endl << password << endl << name
-	  << endl << surname << endl << birthYear << endl;
+	  << endl << surname << endl << birthYear << endl; //group1
 
 	F.close();
 
@@ -156,5 +155,96 @@ bool ClubMember::SignUp(string login, string password, string secPassword, strin
 	return true;
 }
 
+void ClubMember::getGroupsListFromFile()
+{
+	vector<string> groupsList;
 
+	ifstream F;
+	F.open(this->login + ".txt", ofstream::out | ofstream::app);
 
+	string line;
+	for (int i = 0; i < 5; i++)
+		getline(F, line);
+
+	while (true)
+	{
+		getline(F, line);
+		if (line == "") break;
+		groupsList.push_back(line);
+	}
+
+	F.close();
+	
+	this->groups = groupsList;
+}
+
+vector<string> ClubMember::showAllGroups()
+{
+	vector<string> result;
+
+	ifstream F;
+	F.open("groups.txt", ofstream::out | ofstream::app);
+
+	string line;
+
+	while (true)
+	{
+		getline(F, line);
+		if (line == "") break;
+		result.push_back(line);
+	}
+
+	F.close();
+
+	return result;
+}
+
+vector<string> ClubMember::searchGroup(string request)
+{
+	vector<string> result;
+
+	ifstream F;
+	F.open("groups.txt", ofstream::out | ofstream::app);
+
+	string line;
+
+	while (true)
+	{
+		getline(F, line);
+		if (line == "") break;
+		size_t found = line.find(request);
+
+		if (found != string::npos) {
+			result.push_back(line);
+		}
+	}
+
+	F.close();
+
+	return result;
+}
+
+void ClubMember::enterTheGroup(string groupName)
+{
+	ofstream F;
+	F.open(this->login + ".txt", ofstream::out | ofstream::app);
+
+	F << groupName << endl;
+
+	F.close();
+
+	ofstream T;
+	T.open(groupName + ".txt", ofstream::out | ofstream::app);
+
+	T << this->name + " " + this->surname + " (" + this->login + ")"
+	  << endl;
+
+	T.close();
+}
+
+Group ClubMember::groupInfo(string groupName)
+{
+	Group group;
+	group.fillGroupData(groupName);
+	return group;
+}

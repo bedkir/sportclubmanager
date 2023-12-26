@@ -84,30 +84,58 @@ inline User& User::setGroups(vector<string>& groups)
 	return *this;
 }
 
-
-void User::getGroupsListfromFile()
+void User::deleteMember(string groupName, string login, string name, string surname)
 {
-	vector<string> groupsList;
+	vector<string> temp;
 
+	//Group file
 	ifstream F;
-	F.open(this->login + ".txt", ifstream::app);
+	F.open(groupName + ".txt", ofstream::out | ofstream::app);
 
 	string line;
-
-	getline(F, line);
-	getline(F, line);
-	getline(F, line);
-	getline(F, line);
 
 	while (true)
 	{
 		getline(F, line);
-		if (line == "") break;
-		groupsList.push_back(line);
+		temp.push_back(line);
+		if (line == name + " " + surname + " (" + login + ")")
+			temp.pop_back();
+		else if (line == "") break;
 	}
 
 	F.close();
 
-	this->groups = groupsList;
-}
+	ofstream S;
+	S.open(groupName + ".txt", ofstream::trunc);
 
+	for (int i = 0; i < temp.size(); i++)
+		S << temp.at(i) << endl;
+
+	S.close();
+	temp.clear();
+
+	//Member file
+
+	ifstream T;
+	T.open(login + ".txt", ofstream::out | ofstream::app);
+
+	while (true)
+	{
+		getline(T, line);
+		temp.push_back(line);
+		if (line == groupName)
+			temp.pop_back();
+		else if (line == "") break;
+	}
+
+	T.close();
+
+	ofstream K;
+	K.open(login + ".txt", ofstream::trunc);
+
+	for (int i = 0; i < temp.size(); i++)
+		K << temp.at(i) << endl;
+
+	K.close();
+	temp.clear();
+}

@@ -18,11 +18,12 @@ public:
 	bool SignIn(string, string) override;
 	bool SignUp(string, string, string, string, string);
 
+	void getGroupsListFromFile() override;
+
 	void createGroup(string);
 	vector<string> openGroup(string);
 	vector<string> searchMembers(string, string);
 	vector<string> sortMembers(string);
 	vector<string> getInfoOfMember(string);
-	void deleteMember(string, string, string, string);
 };
 

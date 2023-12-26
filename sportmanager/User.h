@@ -35,6 +35,8 @@ public:
 
 	virtual bool SignIn(string, string) = 0;
 	
-	void getGroupsListfromFile();
+	virtual void getGroupsListFromFile() = 0;
+
+	void deleteMember(string, string, string, string);
 };
 

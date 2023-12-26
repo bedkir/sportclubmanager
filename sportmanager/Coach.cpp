@@ -100,7 +100,7 @@ bool Coach::SignIn(string login, string password)
 	T.close();
 
 
-	this->getGroupsListfromFile();
+	this->getGroupsListFromFile();
 
 	return true;
 }
@@ -151,6 +151,29 @@ bool Coach::SignUp(string login, string password, string secPassword, string nam
 	return true;
 }
 
+void Coach::getGroupsListFromFile()
+{
+	vector<string> groupsList;
+
+	ifstream F;
+	F.open(this->login + ".txt", ifstream::app);
+
+	string line;
+
+	for (int i = 0; i < 4; i++)
+		getline(F, line);
+
+	while (true)
+	{
+		getline(F, line);
+		if (line == "") break;
+		groupsList.push_back(line);
+	}
+
+	F.close();
+
+	this->groups = groupsList;
+}
 
 void Coach::createGroup(string sportName)
 {
@@ -186,7 +209,10 @@ void Coach::createGroup(string sportName)
 
 vector<string> Coach::openGroup(string groupName)
 {
-	vector<string> result;
+	Group group;
+	group.fillGroupData(groupName);
+	return group.getMembers();
+	/*vector<string> result;
 
 	ifstream F;
 	F.open(groupName + ".txt", ofstream::out | ofstream::app);
@@ -205,7 +231,7 @@ vector<string> Coach::openGroup(string groupName)
 
 	F.close();
 
-	return result;
+	return result;*/
 }
 
 
@@ -282,60 +308,4 @@ vector<string> Coach::getInfoOfMember(string login)
 	F.close();
 
 	return result;
-}
-
-void Coach::deleteMember(string groupName, string login, string name, string surname)
-{
-	vector<string> temp;
-
-	//Group file
-	ifstream F;
-	F.open(groupName + ".txt", ofstream::out | ofstream::app);
-
-	string line;
-
-	while (true)
-	{
-		getline(F, line);
-		temp.push_back(line);
-		if (line == name + " " + surname + " (" + login + ")")
-			temp.pop_back();
-		else if (line == "") break;
-	}
-
-	F.close();
-
-	ofstream S;
-	S.open(groupName + ".txt", ofstream::out | ofstream::app);
-
-	for (int i = 0; i < temp.size(); i++)
-	S << temp.at(i) << endl;
-
-	S.close();
-	temp.clear();
-
-	//Member file
-
-	ifstream T;
-	T.open(login + ".txt", ofstream::out | ofstream::app);
-
-	while (true)
-	{
-		getline(T, line);
-		temp.push_back(line);
-		if (line == groupName)
-			temp.pop_back();
-		else if (line == "") break;
-	}
-
-	T.close();
-
-	ofstream K;
-	K.open(login + ".txt", ofstream::out | ofstream::app);
-
-	for (int i = 0; i < temp.size(); i++)
-		K << temp.at(i) << endl;
-
-	K.close();
-	temp.clear();
 }

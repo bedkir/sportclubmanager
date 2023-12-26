@@ -1,6 +1,5 @@
 #pragma once
 #include "Coach.h"
-#include "ClubMember.h"
 
 #include <iostream>
 #include <vector>
@@ -11,28 +10,30 @@ class Group
 private:
 	string sportName;
 	string groupName;
-	Coach coach;
+	string coach;
 	vector<string> members;
 
 	static int amountOfGroups;
 
 public:
 	Group();
-	Group(string, Coach, vector<string>);
+	Group(string, string, vector<string>);
 	Group(Group &);
 	virtual ~Group();
 
 	inline string getSportName() const;
 	inline string getGroupName() const;
-	inline Coach getCoach() const;
+	inline string getCoach() const;
 	inline vector<string> getMembers() const;
 	static int getAmountOfGroups();
 
 	inline Group& setSportName(string);
 	inline Group& setGroupName(string);
-	inline Group& setCoach(Coach&);
+	inline Group& setCoach(string);
 	inline Group& setMembers(vector<string>&);
 	static void setAmountOfGroups();
+
+	void fillGroupData(string);
 
 };
 
