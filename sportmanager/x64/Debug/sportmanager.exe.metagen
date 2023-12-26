@@ -39,8 +39,10 @@ Class sportmanager.CoachEditGroup: AutoLayout, AnsiClass, Class, Public, BeforeF
   Fields:
     System.Windows.Forms.Form prevForm : Public
     System.String groupName : Public
+    System.Collections.Generic.List`1[System.Windows.Forms.Button] memberButtons : Public
   Methods:
-    BuildButtons(): PrivateScope, Public, HideBySig
+    BuildButtons(vector<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> >\,std::allocator<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> > > >*, String): PrivateScope, Public, HideBySig
+    DestroyButtons(): PrivateScope, Public, HideBySig
     SetActive(Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig
 Class sportmanager.CoachMain: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form

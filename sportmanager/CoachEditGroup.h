@@ -3,9 +3,13 @@
 #include "Coach.h"
 
 #include <string>
+#include <regex>
 #include <vector>
 #include <msclr/marshal.h>
 #include <msclr\marshal_cppstd.h>
+
+using namespace System::Collections::Generic;
+using namespace System::Text;
 
 namespace sportmanager {
 
@@ -22,9 +26,9 @@ namespace sportmanager {
 	public ref class CoachEditGroup : public System::Windows::Forms::Form
 	{
 	public:
-		Form^ prevForm;
 	private: System::Windows::Forms::TextBox^ textBoxSearch;
-	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Button^ buttonSearch;
+
 	private: System::Windows::Forms::Button^ buttonSort;
 	private: System::Windows::Forms::Button^ buttonBack;
 	private: System::Windows::Forms::Panel^ membersPanel;
@@ -39,29 +43,37 @@ namespace sportmanager {
 	private: System::Windows::Forms::Label^ labelBirthYear;
 	private: System::Windows::Forms::Button^ buttonDeleteMember;
 	public:
+		
+		Form^ prevForm;
 		String^ groupName;
+		List<Button^>^ memberButtons;
 
 		CoachEditGroup(Form^ form, String^ group)
 		{
 			InitializeComponent();
+			memberButtons = gcnew List<Button^>();
 			
 			prevForm = form;
 			groupName = group;
-
-			BuildButtons();
 			this->labelGroupName->Text = groupName;
+
+			string groupN = msclr::interop::marshal_as<std::string>(this->labelGroupName->Text);
+			vector<string> members = Coach::C.openGroup(groupN);
+
+			BuildButtons(members, "У групі немає учасників");
 		}
 
 
-		void BuildButtons()
+		void BuildButtons(vector<string> members, String^ labelText)
 		{
-			string group = msclr::interop::marshal_as<std::string>(this->labelGroupName->Text);
-
-			vector<string> members = Coach::C.openGroup(group);
-
 			if (members.size() == 0)
 			{
-
+				Label^ newLabel = gcnew Label();
+				newLabel->Text = labelText;
+				newLabel->Name = "labelNoGroups";
+				newLabel->Location = Point(0, 0);
+				newLabel->Size = System::Drawing::Size(266, 40);
+				this->membersPanel->Controls->Add(newLabel);
 			}
 			else
 			{
@@ -69,7 +81,35 @@ namespace sportmanager {
 				int y = 0;
 				int h = 40;
 				int w = 266;
+
+				for (int i = 0; i < members.size(); i++)
+				{
+					Button^ newButton = gcnew Button();
+
+					String^ buttonText = gcnew System::String(members[i].c_str());
+					newButton->Text = buttonText;
+					newButton->Name = "button" + i.ToString();
+					newButton->Location = Point(x, y);
+					newButton->Size = System::Drawing::Size(w, h);
+					newButton->Click += gcnew EventHandler(this, &CoachEditGroup::MemberButton_Click);
+
+					this->membersPanel->Controls->Add(newButton);
+					memberButtons->Add(newButton);
+
+					y += h + 10;
+				}
 			}
+		}
+
+
+		void DestroyButtons()
+		{
+			for each (Button ^ button in memberButtons)
+			{
+				this->membersPanel->Controls->Remove(button);
+			}
+
+			memberButtons->Clear();
 		}
 
 
@@ -108,7 +148,7 @@ namespace sportmanager {
 		void InitializeComponent(void)
 		{
 			this->textBoxSearch = (gcnew System::Windows::Forms::TextBox());
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->buttonSearch = (gcnew System::Windows::Forms::Button());
 			this->buttonSort = (gcnew System::Windows::Forms::Button());
 			this->buttonBack = (gcnew System::Windows::Forms::Button());
 			this->membersPanel = (gcnew System::Windows::Forms::Panel());
@@ -134,16 +174,17 @@ namespace sportmanager {
 			this->textBoxSearch->Size = System::Drawing::Size(266, 32);
 			this->textBoxSearch->TabIndex = 0;
 			// 
-			// button1
+			// buttonSearch
 			// 
-			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->buttonSearch->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->button1->Location = System::Drawing::Point(328, 71);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(97, 32);
-			this->button1->TabIndex = 1;
-			this->button1->Text = L"Пошук";
-			this->button1->UseVisualStyleBackColor = true;
+			this->buttonSearch->Location = System::Drawing::Point(328, 71);
+			this->buttonSearch->Name = L"buttonSearch";
+			this->buttonSearch->Size = System::Drawing::Size(97, 32);
+			this->buttonSearch->TabIndex = 1;
+			this->buttonSearch->Text = L"Пошук";
+			this->buttonSearch->UseVisualStyleBackColor = true;
+			this->buttonSearch->Click += gcnew System::EventHandler(this, &CoachEditGroup::buttonSearch_Click);
 			// 
 			// buttonSort
 			// 
@@ -155,6 +196,7 @@ namespace sportmanager {
 			this->buttonSort->TabIndex = 2;
 			this->buttonSort->Text = L"Сортувати";
 			this->buttonSort->UseVisualStyleBackColor = true;
+			this->buttonSort->Click += gcnew System::EventHandler(this, &CoachEditGroup::buttonSort_Click);
 			// 
 			// buttonBack
 			// 
@@ -166,9 +208,12 @@ namespace sportmanager {
 			this->buttonBack->TabIndex = 3;
 			this->buttonBack->Text = L"Назад";
 			this->buttonBack->UseVisualStyleBackColor = true;
+			this->buttonBack->Click += gcnew System::EventHandler(this, &CoachEditGroup::buttonBack_Click);
 			// 
 			// membersPanel
 			// 
+			this->membersPanel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->membersPanel->Location = System::Drawing::Point(56, 109);
 			this->membersPanel->Name = L"membersPanel";
 			this->membersPanel->Size = System::Drawing::Size(266, 348);
@@ -278,6 +323,7 @@ namespace sportmanager {
 			this->buttonDeleteMember->TabIndex = 14;
 			this->buttonDeleteMember->Text = L"Видалити учня";
 			this->buttonDeleteMember->UseVisualStyleBackColor = true;
+			this->buttonDeleteMember->Click += gcnew System::EventHandler(this, &CoachEditGroup::buttonDeleteMember_Click);
 			// 
 			// CoachEditGroup
 			// 
@@ -297,7 +343,7 @@ namespace sportmanager {
 			this->Controls->Add(this->membersPanel);
 			this->Controls->Add(this->buttonBack);
 			this->Controls->Add(this->buttonSort);
-			this->Controls->Add(this->button1);
+			this->Controls->Add(this->buttonSearch);
 			this->Controls->Add(this->textBoxSearch);
 			this->Name = L"CoachEditGroup";
 			this->Text = L"CoachEditGroup";
@@ -309,5 +355,75 @@ namespace sportmanager {
 #pragma endregion
 	private: System::Void CoachEditGroup_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
-	};
+
+	private: System::Void buttonDeleteMember_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
+		string group = msclr::interop::marshal_as<std::string>(this->labelGroupName->Text);
+		string login = msclr::interop::marshal_as<std::string>(this->labelLogin->Text);
+		string name = msclr::interop::marshal_as<std::string>(this->labelName->Text);
+		string surname = msclr::interop::marshal_as<std::string>(this->labelSurname->Text);
+		Coach::C.deleteMember(group, login, name, surname);
+
+		DestroyButtons();
+		string groupN = msclr::interop::marshal_as<std::string>(this->labelGroupName->Text);
+		vector<string> members = Coach::C.openGroup(groupN);
+		BuildButtons(members, "У групі немає учасників");
+		SetActive(false);
+	}
+
+	void MemberButton_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		SetActive(true);
+		Button^ thisButton = safe_cast<Button^>(sender);
+		string member = msclr::interop::marshal_as<std::string>(thisButton->Text);
+
+		regex loginRegex("\\(([^)]+)\\)");
+		smatch match;
+		regex_search(member, match, loginRegex);
+		string login = match[1];
+
+		vector<string> memberInfo = Coach::C.getInfoOfMember(login);
+
+		this->labelLogin->Text = gcnew System::String(memberInfo[0].c_str());
+		this->labelName->Text = gcnew System::String(memberInfo[1].c_str());
+		this->labelSurname->Text = gcnew System::String(memberInfo[2].c_str());
+		this->labelBirthYear->Text = gcnew System::String(memberInfo[3].c_str());
+	}
+
+	private: System::Void buttonBack_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
+		this->Hide();
+		prevForm->Show();
+		this->Close();
+	}
+
+	private: System::Void buttonSearch_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
+		if (this->textBoxSearch->Text == "")
+		{
+			DestroyButtons();
+			string groupN = msclr::interop::marshal_as<std::string>(this->labelGroupName->Text);
+			vector<string> members = Coach::C.openGroup(groupN);
+			BuildButtons(members, "У групі немає учасників");
+		}
+		else
+		{
+			string request = msclr::interop::marshal_as<std::string>(this->textBoxSearch->Text);
+			string group = msclr::interop::marshal_as<std::string>(this->labelGroupName->Text);
+			vector<string> result = Coach::C.searchMembers(request, group);
+
+			DestroyButtons();
+			BuildButtons(result, "За Вашим запитом нічого не знайдено");
+		}
+	}
+
+	private: System::Void buttonSort_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
+		string group = msclr::interop::marshal_as<std::string>(this->labelGroupName->Text);
+		vector<string> result = Coach::C.sortMembers(group);
+
+		DestroyButtons();
+		BuildButtons(result, "У групі немає учасників");
+	}
+};
 }

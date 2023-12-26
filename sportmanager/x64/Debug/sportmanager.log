@@ -1,3 +1,12 @@
+<<<<<<< Updated upstream
 ﻿  User.cpp
+=======
+﻿  CoachEditGroup.cpp
+  CoachMain.cpp
+  LogIn.cpp
+  MyForm.cpp
+  SignUp.cpp
+  Создание кода...
+>>>>>>> Stashed changes
   ClubMember.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
-  sportmanager.vcxproj -> C:\Users\pando\Desktop\git repos\sportclubmanager\sportmanager\x64\Debug\sportmanager.exe
+  sportmanager.vcxproj -> D:\OOP\sportclubmanager\sportmanager\x64\Debug\sportmanager.exe
