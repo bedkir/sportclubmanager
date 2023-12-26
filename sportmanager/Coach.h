@@ -24,5 +24,7 @@ public:
 
 	bool SignIn(string, string) override;
 	bool SignUp(string, string, string, string, string);
+
+	void getGroupsList() override;
 };
 

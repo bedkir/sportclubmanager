@@ -3,6 +3,7 @@
 #include <fstream>
 #include <conio.h>
 #include <string>
+#include <vector>
 
 Coach::Coach()
 {
@@ -133,4 +134,27 @@ bool Coach::SignUp(string login, string password, string secPassword, string nam
 	T.close();
 
 	return true;
+}
+
+
+void Coach::getGroupsList()
+{
+	vector<string> groupsList;
+
+	ifstream F;
+	F.open(this->login + ".txt", ifstream::app);
+
+	string line;
+
+	getline(F, line);
+	getline(F, line);
+	getline(F, line);
+	getline(F, line);
+
+	while (getline(F, line))
+		groupsList.push_back(line);
+
+	F.close();
+
+	this->groups = groupsList;
 }

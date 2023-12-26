@@ -139,3 +139,26 @@ bool ClubMember::SignUp(string login, string password, string secPassword, strin
 
 	return true;
 }
+
+
+void ClubMember::getGroupsList()
+{
+	vector<string> groupsList;
+
+	ifstream F;
+	F.open(this->login + ".txt", ifstream::app);
+
+	string line;
+
+	getline(F, line);
+	getline(F, line);
+	getline(F, line);
+	getline(F, line);
+
+	while (getline(F, line))
+		groupsList.push_back(line);
+
+	F.close();
+
+	this->groups = groupsList;
+}
