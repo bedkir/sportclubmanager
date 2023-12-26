@@ -30,9 +30,6 @@
     <ClCompile Include="Group.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Registration.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="LogIn.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -54,6 +51,9 @@
     <ClCompile Include="ClubMemberJoin.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="Registration.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyForm.h">
@@ -69,9 +69,6 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="User.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Registration.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="LogIn.h">
@@ -93,6 +90,9 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="ClubMemberJoin.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Registration.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

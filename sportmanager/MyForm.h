@@ -1,4 +1,5 @@
 #pragma once
+#include "LogIn.h"
 
 namespace sportmanager {
 
@@ -35,6 +36,7 @@ namespace sportmanager {
 			}
 		}
 	private: System::Windows::Forms::Label^ label1;
+
 	protected:
 
 	private:
@@ -56,18 +58,20 @@ namespace sportmanager {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(200, 91);
+			this->label1->Location = System::Drawing::Point(150, 74);
+			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(0, 16);
+			this->label1->Size = System::Drawing::Size(0, 13);
 			this->label1->TabIndex = 0;
 			this->label1->Click += gcnew System::EventHandler(this, &MyForm::label1_Click);
 			// 
 			// MyForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(681, 388);
+			this->ClientSize = System::Drawing::Size(511, 315);
 			this->Controls->Add(this->label1);
+			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"MyForm";
 			this->Text = L"MyForm";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);

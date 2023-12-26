@@ -1,6 +1,13 @@
 D:\OOP\sportclubmanager\sportmanager\ClubMember.cpp;D:\OOP\sportclubmanager\sportmanager\x64\Debug\ClubMember.obj
+D:\OOP\sportclubmanager\sportmanager\ClubMemberGroup.cpp;D:\OOP\sportclubmanager\sportmanager\x64\Debug\ClubMemberGroup.obj
+D:\OOP\sportclubmanager\sportmanager\ClubMemberJoin.cpp;D:\OOP\sportclubmanager\sportmanager\x64\Debug\ClubMemberJoin.obj
+D:\OOP\sportclubmanager\sportmanager\ClubMemberMain.cpp;D:\OOP\sportclubmanager\sportmanager\x64\Debug\ClubMemberMain.obj
 D:\OOP\sportclubmanager\sportmanager\Coach.cpp;D:\OOP\sportclubmanager\sportmanager\x64\Debug\Coach.obj
+D:\OOP\sportclubmanager\sportmanager\CoachAddGroup.cpp;D:\OOP\sportclubmanager\sportmanager\x64\Debug\CoachAddGroup.obj
+D:\OOP\sportclubmanager\sportmanager\CoachEditGroup.cpp;D:\OOP\sportclubmanager\sportmanager\x64\Debug\CoachEditGroup.obj
+D:\OOP\sportclubmanager\sportmanager\CoachMain.cpp;D:\OOP\sportclubmanager\sportmanager\x64\Debug\CoachMain.obj
 D:\OOP\sportclubmanager\sportmanager\Group.cpp;D:\OOP\sportclubmanager\sportmanager\x64\Debug\Group.obj
+D:\OOP\sportclubmanager\sportmanager\LogIn.cpp;D:\OOP\sportclubmanager\sportmanager\x64\Debug\LogIn.obj
 D:\OOP\sportclubmanager\sportmanager\MyForm.cpp;D:\OOP\sportclubmanager\sportmanager\x64\Debug\MyForm.obj
 D:\OOP\sportclubmanager\sportmanager\Registration.cpp;D:\OOP\sportclubmanager\sportmanager\x64\Debug\Registration.obj
 D:\OOP\sportclubmanager\sportmanager\User.cpp;D:\OOP\sportclubmanager\sportmanager\x64\Debug\User.obj

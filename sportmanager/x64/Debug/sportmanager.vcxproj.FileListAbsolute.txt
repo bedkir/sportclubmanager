@@ -8,3 +8,4 @@ C:\Users\pando\Desktop\git repos\sportclubmanager\sportmanager\x64\Debug\sportma
 C:\Users\pando\Desktop\git repos\sportclubmanager\sportmanager\x64\Debug\sportmanager.vcxproj.GenerateResource.cache
 C:\Users\pando\Desktop\git repos\sportclubmanager\sportmanager\x64\Debug\sportmanager.exe
 C:\Users\pando\Desktop\git repos\sportclubmanager\sportmanager\x64\Debug\sportmanager.Registration.resources
+D:\OOP\sportclubmanager\sportmanager\x64\Debug\sportmanager.LogIn.resources
