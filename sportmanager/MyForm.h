@@ -1,6 +1,6 @@
 #pragma once
 #include "LogIn.h"
-#include "Registration.h"
+#include "SignUp.h"
 
 namespace sportmanager {
 
@@ -79,7 +79,7 @@ namespace sportmanager {
 			this->buttonRegistration->Name = L"buttonRegistration";
 			this->buttonRegistration->Size = System::Drawing::Size(130, 47);
 			this->buttonRegistration->TabIndex = 2;
-			this->buttonRegistration->Text = L"Ðåã³ñòðàö³ÿ";
+			this->buttonRegistration->Text = L"Ðåºñòðàö³ÿ";
 			this->buttonRegistration->UseVisualStyleBackColor = true;
 			this->buttonRegistration->Click += gcnew System::EventHandler(this, &MyForm::buttonRegistration_Click);
 			// 
@@ -112,7 +112,7 @@ namespace sportmanager {
 	private: System::Void buttonRegistration_Click(System::Object^ sender, System::EventArgs^ e) 
 	{
 		this->Hide();
-		Registration^ regForm = gcnew Registration();
+		SignUp^ regForm = gcnew SignUp();
 		regForm->ShowDialog();
 		this->Close();
 	}

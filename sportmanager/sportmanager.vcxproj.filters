@@ -51,7 +51,7 @@
     <ClCompile Include="ClubMemberJoin.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Registration.cpp">
+    <ClCompile Include="SignUp.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -92,7 +92,7 @@
     <ClInclude Include="ClubMemberJoin.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Registration.h">
+    <ClInclude Include="SignUp.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
