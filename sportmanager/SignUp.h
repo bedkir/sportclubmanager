@@ -1,5 +1,12 @@
 #pragma once
 
+#include "Coach.h"
+#include "ClubMember.h"
+
+#include <string>
+#include <msclr/marshal.h>
+#include <msclr\marshal_cppstd.h>
+
 namespace sportmanager {
 
 	using namespace System;
@@ -52,6 +59,8 @@ namespace sportmanager {
 
 	private: System::Windows::Forms::RadioButton^ radioButtonCoach;
 	private: System::Windows::Forms::Button^ buttonSignUp;
+	private: System::Windows::Forms::Label^ labelWarning;
+
 
 
 
@@ -85,6 +94,7 @@ namespace sportmanager {
 			this->radioButtonCoach = (gcnew System::Windows::Forms::RadioButton());
 			this->radioButtonMember = (gcnew System::Windows::Forms::RadioButton());
 			this->buttonSignUp = (gcnew System::Windows::Forms::Button());
+			this->labelWarning = (gcnew System::Windows::Forms::Label());
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -169,6 +179,7 @@ namespace sportmanager {
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
 			this->textBoxSecPassword->Location = System::Drawing::Point(205, 176);
 			this->textBoxSecPassword->Name = L"textBoxSecPassword";
+			this->textBoxSecPassword->PasswordChar = '*';
 			this->textBoxSecPassword->Size = System::Drawing::Size(100, 24);
 			this->textBoxSecPassword->TabIndex = 7;
 			// 
@@ -178,6 +189,7 @@ namespace sportmanager {
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
 			this->textBoxPassword->Location = System::Drawing::Point(205, 118);
 			this->textBoxPassword->Name = L"textBoxPassword";
+			this->textBoxPassword->PasswordChar = '*';
 			this->textBoxPassword->Size = System::Drawing::Size(100, 24);
 			this->textBoxPassword->TabIndex = 8;
 			// 
@@ -258,12 +270,25 @@ namespace sportmanager {
 			this->buttonSignUp->TabIndex = 13;
 			this->buttonSignUp->Text = L"Зареєструватися";
 			this->buttonSignUp->UseVisualStyleBackColor = true;
+			this->buttonSignUp->Click += gcnew System::EventHandler(this, &SignUp::buttonSignUp_Click);
+			// 
+			// labelWarning
+			// 
+			this->labelWarning->AutoSize = true;
+			this->labelWarning->ForeColor = System::Drawing::Color::Red;
+			this->labelWarning->Location = System::Drawing::Point(369, 325);
+			this->labelWarning->Name = L"labelWarning";
+			this->labelWarning->Size = System::Drawing::Size(220, 13);
+			this->labelWarning->TabIndex = 14;
+			this->labelWarning->Text = L"Щось пішло не так, перевірте введені дані";
+			this->labelWarning->Visible = false;
 			// 
 			// SignUp
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(601, 407);
+			this->Controls->Add(this->labelWarning);
 			this->Controls->Add(this->buttonSignUp);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->textBoxBirthYear);
@@ -294,13 +319,41 @@ namespace sportmanager {
 	{
 		if (this->radioButtonCoach->Checked)
 		{
-			label6->Enabled = false;
-			textBoxBirthYear->Enabled = false;
+			this->label6->Enabled = false;
+			this->textBoxBirthYear->Enabled = false;
+			this->textBoxBirthYear->Text = "";
 		}
 		else
 		{
-			label6->Enabled = true;
-			textBoxBirthYear->Enabled = true;
+			this->label6->Enabled = true;
+			this->textBoxBirthYear->Enabled = true;
+		}
+	}
+
+	private: System::Void buttonSignUp_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
+		string login = msclr::interop::marshal_as<std::string>(this->textBoxLogin->Text);
+		string password = msclr::interop::marshal_as<std::string>(this->textBoxPassword->Text);
+		string secPassword = msclr::interop::marshal_as<std::string>(this->textBoxSecPassword->Text);
+		string name = msclr::interop::marshal_as<std::string>(this->textBoxName->Text);
+		string surname = msclr::interop::marshal_as<std::string>(this->textBoxSurname->Text);
+		int birthYear;
+
+		if (this->textBoxBirthYear->Text != "")
+		{
+			string birthYearStr = msclr::interop::marshal_as<std::string>(this->textBoxBirthYear->Text);
+			birthYear = stoi(birthYearStr);
+		}
+		bool result;
+
+		if (this->radioButtonMember->Checked)
+			result = ClubMember::CM.SignUp(login, password, secPassword, name, surname, birthYear);
+		else
+			result = Coach::C.SignUp(login, password, secPassword, name, surname);
+
+		if (!result)
+		{
+			this->labelWarning->Visible = true;
 		}
 	}
 };
