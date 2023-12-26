@@ -19,6 +19,9 @@ public:
 	bool SignUp(string, string, string, string, string);
 
 	void createGroup(string);
-	void groupInfo(string);
+	vector<string> openGroup(string);
+	vector<string> searchMembers(string, string);
+	vector<string> sortMembers(string);
+	vector<string> getInfoOfMember(string);
 };
 

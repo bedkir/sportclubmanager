@@ -1,4 +1,5 @@
 #include "ClubMember.h"
+#include "Group.h"
 
 #include <fstream>
 #include <string>

@@ -3,6 +3,7 @@
 
 #include <fstream>
 #include <string>
+#include <algorithm>
 
 
 Coach& Coach::C = *new Coach();
@@ -168,10 +169,112 @@ void Coach::createGroup(string sportName)
 	  << endl; // for members -> name surname (login)
 
 	T.close();
+
+	ofstream S;
+	S.open("groups.txt", ofstream::out | ofstream::app);
+
+	S << "group" + to_string(Group::getAmountOfGroups())
+		<< endl;
+
+	S.close();
 }
 
 
-void Coach::groupInfo(string groupName)
+vector<string> Coach::openGroup(string groupName)
 {
+	vector<string> result;
 
+	ifstream F;
+	F.open(groupName + ".txt", ofstream::out | ofstream::app);
+
+	string line;
+
+	getline(F, line);
+	getline(F, line);
+
+	while (true)
+	{
+		getline(F, line);
+		if (line == "") break;
+		result.push_back(line);
+	}
+
+	F.close();
+
+	return result;
+}
+
+
+vector<string> Coach::searchMembers(string request, string groupName)
+{
+	vector<string> result;
+
+	ifstream F;
+	F.open(groupName + ".txt", ofstream::out | ofstream::app);
+
+	string line;
+
+	getline(F, line);
+	getline(F, line);
+
+	while (true)
+	{
+		getline(F, line);
+		if (line == "") break;
+		size_t found = line.find(request);
+
+		if (found != string::npos) {
+			result.push_back(line);
+		}
+	}
+
+	F.close();
+
+	return result;
+}
+
+
+vector<string> Coach::sortMembers(string groupName)
+{
+	vector<string> result;
+
+	ifstream F;
+	F.open(groupName + ".txt", ofstream::out | ofstream::app);
+
+	string line;
+
+	getline(F, line);
+	getline(F, line);
+
+	while (true)
+	{
+		getline(F, line);
+		if (line == "") break;
+		result.push_back(line);
+	}
+
+	sort(result.begin(), result.end());
+
+	F.close();
+
+	return result;
+}
+
+vector<string> Coach::getInfoOfMember(string login)
+{
+	vector<string> result;
+
+	ifstream F;
+	F.open(login +  ".txt", ofstream::out | ofstream::app);
+
+	string line;
+	for (int i = 0; i < 5; i++)
+	{
+		getline(F, line);
+		result.push_back(line);
+	}
+
+	F.close();
+
+	return result;
 }

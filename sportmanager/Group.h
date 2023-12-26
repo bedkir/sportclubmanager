@@ -1,5 +1,6 @@
 #pragma once
 #include "Coach.h"
+#include "ClubMember.h"
 
 #include <iostream>
 #include <vector>
@@ -31,6 +32,7 @@ public:
 	inline Group& setGroupName(string);
 	inline Group& setCoach(Coach&);
 	inline Group& setMembers(vector<string>&);
+	static void setAmountOfGroups();
 
 };
 
