@@ -1,4 +1,4 @@
-group1
-group2
-group3
-group4
+group1 (basketball)
+group2 (basketball)
+group3 (football)
+group4 (volleyball)

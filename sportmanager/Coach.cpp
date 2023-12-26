@@ -174,7 +174,7 @@ void Coach::createGroup(string sportName)
 	S.open("groups.txt", ofstream::out | ofstream::app);
 
 	S << "group" + to_string(Group::getAmountOfGroups() + 1)
-		<< endl;
+		<< " (" << sportName << ")" << endl;
 
 	S.close();
 
