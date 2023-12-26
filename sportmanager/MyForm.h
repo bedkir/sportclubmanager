@@ -1,5 +1,6 @@
 #pragma once
 #include "LogIn.h"
+#include "Registration.h"
 
 namespace sportmanager {
 
@@ -35,7 +36,9 @@ namespace sportmanager {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Label^ label1;
+
+	private: System::Windows::Forms::Button^ buttonLogIn;
+	private: System::Windows::Forms::Button^ buttonRegistration;
 
 	protected:
 
@@ -52,37 +55,66 @@ namespace sportmanager {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->buttonLogIn = (gcnew System::Windows::Forms::Button());
+			this->buttonRegistration = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
-			// label1
+			// buttonLogIn
 			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(150, 74);
-			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(0, 13);
-			this->label1->TabIndex = 0;
-			this->label1->Click += gcnew System::EventHandler(this, &MyForm::label1_Click);
+			this->buttonLogIn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->buttonLogIn->Location = System::Drawing::Point(187, 95);
+			this->buttonLogIn->Name = L"buttonLogIn";
+			this->buttonLogIn->Size = System::Drawing::Size(130, 47);
+			this->buttonLogIn->TabIndex = 1;
+			this->buttonLogIn->Text = L"¬х≥д в акаунт";
+			this->buttonLogIn->UseVisualStyleBackColor = true;
+			this->buttonLogIn->Click += gcnew System::EventHandler(this, &MyForm::buttonLogIn_Click);
+			// 
+			// buttonRegistration
+			// 
+			this->buttonRegistration->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
+			this->buttonRegistration->Location = System::Drawing::Point(187, 175);
+			this->buttonRegistration->Name = L"buttonRegistration";
+			this->buttonRegistration->Size = System::Drawing::Size(130, 47);
+			this->buttonRegistration->TabIndex = 2;
+			this->buttonRegistration->Text = L"–ег≥страц≥€";
+			this->buttonRegistration->UseVisualStyleBackColor = true;
+			this->buttonRegistration->Click += gcnew System::EventHandler(this, &MyForm::buttonRegistration_Click);
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(511, 315);
-			this->Controls->Add(this->label1);
+			this->Controls->Add(this->buttonRegistration);
+			this->Controls->Add(this->buttonLogIn);
 			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"MyForm";
-			this->Text = L"MyForm";
+			this->Text = L"¬х≥д";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->ResumeLayout(false);
-			this->PerformLayout();
 
 		}
 #pragma endregion
-	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
+	}
+
+	private: System::Void buttonLogIn_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
+		this->Hide();
+		LogIn^ logForm = gcnew LogIn();
+		logForm->ShowDialog();
+		this->Close();
+	}
+
+	private: System::Void buttonRegistration_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
+		this->Hide();
+		Registration^ regForm = gcnew Registration();
+		regForm->ShowDialog();
+		this->Close();
 	}
 	};
 }
