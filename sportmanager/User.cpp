@@ -1,15 +1,18 @@
 #include "User.h"
+#include <fstream>
+#include <string>
 
 User::User()
 {
 }
 
-User::User(string login, string password, string name, string surname)
+User::User(string login, string password, string name, string surname, vector<string> groups)
 {
 	this->login = login;
 	this->password = password;
 	this->name = name;
 	this->surname = surname;
+	this->groups = groups;
 }
 
 User::User(const User& user)
@@ -18,6 +21,7 @@ User::User(const User& user)
 	this->password = user.getPassword();
 	this->name = user.getName();
 	this->surname = user.getSurname();
+	this->groups = user.getGroups();
 }
 
 User::~User()
@@ -68,4 +72,38 @@ inline User& User::setSurname(string surname)
 	return *this;
 }
 
+
+inline vector<string> User::getGroups() const
+{
+	return this->groups;
+}
+
+inline User& User::setGroups(vector<string>& groups)
+{
+	this->groups = groups;
+	return *this;
+}
+
+
+void User::getGroupsListfromFile()
+{
+	vector<string> groupsList;
+
+	ifstream F;
+	F.open(this->login + ".txt", ifstream::app);
+
+	string line;
+
+	getline(F, line);
+	getline(F, line);
+	getline(F, line);
+	getline(F, line);
+
+	while (getline(F, line))
+		groupsList.push_back(line);
+
+	F.close();
+
+	this->groups = groupsList;
+}
 

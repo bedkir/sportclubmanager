@@ -1,7 +1,6 @@
 #include "ClubMember.h"
 
 #include <fstream>
-#include <conio.h>
 #include <string>
 
 ClubMember::ClubMember()
@@ -21,7 +20,6 @@ ClubMember::ClubMember(string login, string password, string name, string surnam
 ClubMember::ClubMember(const ClubMember& member) : User(member)
 {
 	this->birthYear = member.getBirthYear();
-	this->groups = member.getGroups();
 }
 
 ClubMember::~ClubMember()
@@ -34,10 +32,6 @@ inline int ClubMember::getBirthYear() const
 	return this->birthYear;
 }
 
-inline vector<string> ClubMember::getGroups() const
-{
-	return this->groups;
-}
 
 inline ClubMember& ClubMember::setBirthYear(int birthYear)
 {
@@ -45,11 +39,26 @@ inline ClubMember& ClubMember::setBirthYear(int birthYear)
 	return *this;
 }
 
-inline ClubMember& ClubMember::setGroups(vector<string>& groups)
+
+bool containsMember(string login)
 {
-	this->groups = groups;
-	return *this;
+	ifstream F;
+	F.open("Members.txt", ifstream::app);
+
+
+	string line;
+
+	while (getline(F, line))
+		if (line == login)
+		{
+			F.close();
+			return true;
+		}
+
+	F.close();
+	return false;
 }
+
 
 bool ClubMember::SignIn(string login, string password)
 {
@@ -76,25 +85,6 @@ bool ClubMember::SignIn(string login, string password)
 	return true;
 }
 
-
-bool containsMember(string login)
-{
-	ifstream F;
-	F.open("Members.txt", ifstream::app);
-
-
-	string line;
-
-	while (getline(F, line))
-		if (line == login)
-		{
-			F.close();
-			return true;
-		}
-
-	F.close();
-	return false;
-}
 
 
 bool ClubMember::SignUp(string login, string password, string secPassword, string name, string surname, int birthYear)
@@ -141,24 +131,4 @@ bool ClubMember::SignUp(string login, string password, string secPassword, strin
 }
 
 
-void ClubMember::getGroupsList()
-{
-	vector<string> groupsList;
 
-	ifstream F;
-	F.open(this->login + ".txt", ifstream::app);
-
-	string line;
-
-	getline(F, line);
-	getline(F, line);
-	getline(F, line);
-	getline(F, line);
-
-	while (getline(F, line))
-		groupsList.push_back(line);
-
-	F.close();
-
-	this->groups = groupsList;
-}

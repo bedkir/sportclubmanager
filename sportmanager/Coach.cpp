@@ -1,9 +1,7 @@
 #include "Coach.h"
 
 #include <fstream>
-#include <conio.h>
 #include <string>
-#include <vector>
 
 Coach::Coach()
 {
@@ -20,7 +18,6 @@ Coach::Coach(string login, string password, string name, string surname, vector<
 
 Coach::Coach(const Coach& coach) : User(coach)
 {
-	this->groups = coach.getGroups();
 }
 
 Coach::~Coach()
@@ -28,16 +25,6 @@ Coach::~Coach()
 	this->groups.clear();
 }
 
-inline vector<string> Coach::getGroups() const
-{
-	return this->groups;
-}
-
-inline Coach& Coach::setGroups(vector<string>& groups)
-{
-	this->groups = groups;
-	return *this;
-}
 
 Coach& Coach::operator=(const Coach& otherCoach)
 {
@@ -46,6 +33,27 @@ Coach& Coach::operator=(const Coach& otherCoach)
 	this->password = otherCoach.getPassword();
 	return *this;
 }
+
+
+bool containsCoach(string login)
+{
+	ifstream F;
+	F.open("Coaches.txt", ifstream::app);
+
+
+	string line;
+
+	while (getline(F, line))
+		if (line == login)
+		{
+			F.close();
+			return true;
+		}
+
+	F.close();
+	return false;
+}
+
 
 bool Coach::SignIn(string login, string password)
 {
@@ -70,26 +78,6 @@ bool Coach::SignIn(string login, string password)
 	this->password = password;
 
 	return true;
-}
-
-
-bool containsCoach(string login)
-{
-	ifstream F;
-	F.open("Coaches.txt", ifstream::app);
-
-
-	string line;
-
-	while (getline(F, line))
-		if (line == login)
-		{
-			F.close();
-			return true;
-		}
-
-	F.close();
-	return false;
 }
 
 
@@ -137,24 +125,3 @@ bool Coach::SignUp(string login, string password, string secPassword, string nam
 }
 
 
-void Coach::getGroupsList()
-{
-	vector<string> groupsList;
-
-	ifstream F;
-	F.open(this->login + ".txt", ifstream::app);
-
-	string line;
-
-	getline(F, line);
-	getline(F, line);
-	getline(F, line);
-	getline(F, line);
-
-	while (getline(F, line))
-		groupsList.push_back(line);
-
-	F.close();
-
-	this->groups = groupsList;
-}
