@@ -4,7 +4,7 @@ Coach::Coach()
 {
 }
 
-Coach::Coach(string login, string password, vector<Group> group)
+Coach::Coach(string login, string password, vector<string> group)
 {
 	this->login = login;
 	this->password = password;
@@ -23,12 +23,12 @@ Coach::~Coach()
 	this->groups.clear();
 }
 
-inline vector<Group> Coach::getGroups() const
+inline vector<string> Coach::getGroups() const
 {
 	return this->groups;
 }
 
-inline Coach& Coach::setGroups(vector<Group>& groups)
+inline Coach& Coach::setGroups(vector<string>& groups)
 {
 	this->groups = groups;
 	return *this;

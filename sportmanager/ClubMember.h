@@ -9,17 +9,17 @@ using namespace std;
 class ClubMember : public User
 {
 private:
-	vector<Group> groups;
+	vector<string> groups;
 
 public:
 	ClubMember();
-	ClubMember(string, string, vector<Group>);
+	ClubMember(string, string, vector<string>);
 	ClubMember(const ClubMember &);
 	virtual ~ClubMember();
 
-	inline vector<Group> getGroups() const;
+	inline vector<string> getGroups() const;
 
-	inline ClubMember& setGroups(vector<Group>&);
+	inline ClubMember& setGroups(vector<string>&);
 
 	bool SignIn(string, string) override;
 	bool SignUp(string, string, string) override;

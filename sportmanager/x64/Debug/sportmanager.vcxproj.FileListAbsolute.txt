@@ -2,3 +2,8 @@ D:\OOP\sportclubmanager\sportmanager\x64\Debug\sportmanager.vcxproj.AssemblyRefe
 D:\OOP\sportclubmanager\sportmanager\x64\Debug\sportmanager.MyForm.resources
 D:\OOP\sportclubmanager\sportmanager\x64\Debug\sportmanager.vcxproj.GenerateResource.cache
 D:\OOP\sportclubmanager\sportmanager\x64\Debug\sportmanager.exe
+C:\Users\pando\Desktop\git repos\sportclubmanager\sportmanager\x64\Debug\sportmanager.vcxproj.AssemblyReference.cache
+C:\Users\pando\Desktop\git repos\sportclubmanager\sportmanager\x64\Debug\sportmanager.vcxproj.SuggestedBindingRedirects.cache
+C:\Users\pando\Desktop\git repos\sportclubmanager\sportmanager\x64\Debug\sportmanager.MyForm.resources
+C:\Users\pando\Desktop\git repos\sportclubmanager\sportmanager\x64\Debug\sportmanager.vcxproj.GenerateResource.cache
+C:\Users\pando\Desktop\git repos\sportclubmanager\sportmanager\x64\Debug\sportmanager.exe

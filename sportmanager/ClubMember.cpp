@@ -4,7 +4,7 @@ ClubMember::ClubMember()
 {
 }
 
-ClubMember::ClubMember(string login, string password, vector<Group> groups)
+ClubMember::ClubMember(string login, string password, vector<string> groups)
 {
 	this->login = login;
 	this->password = password;
@@ -23,12 +23,12 @@ ClubMember::~ClubMember()
 	this->groups.clear();
 }
 
-inline vector<Group> ClubMember::getGroups() const
+inline vector<string> ClubMember::getGroups() const
 {
 	return this->groups;
 }
 
-inline ClubMember& ClubMember::setGroups(vector<Group>& groups)
+inline ClubMember& ClubMember::setGroups(vector<string>& groups)
 {
 	this->groups = groups;
 	return *this;

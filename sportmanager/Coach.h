@@ -1,6 +1,5 @@
 #pragma once
 #include "User.h"
-#include "Group.h"
 
 #include <iostream>
 #include <vector>
@@ -9,17 +8,17 @@ using namespace std;
 class Coach : public User
 {
 private:
-	vector<Group> groups;
+	vector<string> groups;
 
 public:
 	Coach();
-	Coach(string, string, vector<Group>);
+	Coach(string, string, vector<string>);
 	Coach(const Coach &);
 	virtual ~Coach();
 
-	inline vector<Group> getGroups() const;
+	inline vector<string> getGroups() const;
 
-	inline Coach& setGroups(vector<Group>&);
+	inline Coach& setGroups(vector<string>&);
 
 	Coach& operator=(const Coach&);
 
