@@ -60,6 +60,7 @@ namespace sportmanager {
 			string groupN = msclr::interop::marshal_as<std::string>(this->labelGroupName->Text);
 			vector<string> members = Coach::C.openGroup(groupN);
 
+			SetActive(false);
 			BuildButtons(members, "У групі немає учасників");
 		}
 

@@ -20,6 +20,8 @@ namespace sportmanager {
 	public ref class CoachMain : public System::Windows::Forms::Form
 	{
 	public:
+		Label^ noMembers;
+
 		CoachMain(void)
 		{
 			InitializeComponent();
@@ -30,6 +32,7 @@ namespace sportmanager {
 		void BuildButtons()
 		{
 			vector<string> groups = Coach::C.getGroups();
+			this->groupsPanel->Controls->Remove(noMembers);
 
 			if (groups.size() == 0)
 			{
@@ -38,7 +41,8 @@ namespace sportmanager {
 				newLabel->Name = "labelNoGroups";
 				newLabel->Location = Point(0, 0);
 				newLabel->Size = System::Drawing::Size(384, 40);
-				this->groupsPanel->Controls->Add(newLabel);
+				noMembers = newLabel;
+				this->groupsPanel->Controls->Add(noMembers);
 			}
 			else
 			{

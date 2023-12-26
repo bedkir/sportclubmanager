@@ -47,6 +47,8 @@ Class sportmanager.CoachEditGroup: AutoLayout, AnsiClass, Class, Public, BeforeF
 Class sportmanager.CoachMain: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Windows.Forms.Label noMembers : Public
   Methods:
     BuildButtons(): PrivateScope, Public, HideBySig
 Class sportmanager.LogIn: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
