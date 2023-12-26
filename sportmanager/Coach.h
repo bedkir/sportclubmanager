@@ -19,5 +19,6 @@ public:
 	bool SignUp(string, string, string, string, string);
 
 	void createGroup(string);
+	void groupInfo(string);
 };
 

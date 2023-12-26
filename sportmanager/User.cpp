@@ -99,8 +99,12 @@ void User::getGroupsListfromFile()
 	getline(F, line);
 	getline(F, line);
 
-	while (getline(F, line))
+	while (true)
+	{
+		getline(F, line);
+		if (line == "") break;
 		groupsList.push_back(line);
+	}
 
 	F.close();
 

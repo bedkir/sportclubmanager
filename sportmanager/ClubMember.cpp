@@ -66,7 +66,7 @@ bool containsMember(string login)
 
 bool ClubMember::SignIn(string login, string password)
 {
-	string pswrd;
+	string temp;
 
 	if (!containsMember(login))
 		return false;
@@ -75,16 +75,33 @@ bool ClubMember::SignIn(string login, string password)
 	F.open(login + ".txt", ifstream::app);
 
 
-	getline(F, pswrd);
-	getline(F, pswrd);
+	getline(F, temp);
+	getline(F, temp);
 
 	F.close();
 
-	if (pswrd != password)
+	if (temp != password)
 		return false;
 
 	this->login = login;
 	this->password = password;
+
+	ifstream T;
+	T.open(login + ".txt", ifstream::app);
+
+
+	getline(T, temp);
+	getline(T, temp);
+	getline(T, temp);
+
+	this->name = temp;
+
+	getline(T, temp);
+
+	this->surname = temp;
+
+	T.close();
+
 	this->getGroupsListfromFile();
 
 	return true;
@@ -114,6 +131,9 @@ bool ClubMember::SignUp(string login, string password, string secPassword, strin
 
 	this->login = login;
 	this->password = password;
+	this->name = name;
+	this->surname = surname;
+	this->birthYear = birthYear;
 
 
 	ofstream F;

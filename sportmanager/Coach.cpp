@@ -62,7 +62,7 @@ bool containsCoach(string login)
 
 bool Coach::SignIn(string login, string password)
 {
-	string pswrd;
+	string temp;
 
 	if (!containsCoach(login))
 		return false;
@@ -71,16 +71,34 @@ bool Coach::SignIn(string login, string password)
 	F.open(login + ".txt", ifstream::app);
 
 
-	getline(F, pswrd);
-	getline(F, pswrd);
+	getline(F, temp);
+	getline(F, temp);
 
 	F.close();
 
-	if (pswrd != password)
+	if (temp != password)
 		return false;
 
 	this->login = login;
 	this->password = password;
+
+	ifstream T;
+	T.open(login + ".txt", ifstream::app);
+
+
+	getline(T, temp);
+	getline(T, temp);
+	getline(T, temp);
+
+	this->name = temp;
+
+	getline(T, temp);
+
+	this->surname = temp;
+
+	T.close();
+
+
 	this->getGroupsListfromFile();
 
 	return true;
@@ -109,6 +127,8 @@ bool Coach::SignUp(string login, string password, string secPassword, string nam
 
 	this->login = login;
 	this->password = password;
+	this->name = name;
+	this->surname = surname;
 
 
 	ofstream F;
@@ -148,4 +168,10 @@ void Coach::createGroup(string sportName)
 	  << endl; // for members -> name surname (login)
 
 	T.close();
+}
+
+
+void Coach::groupInfo(string groupName)
+{
+
 }
