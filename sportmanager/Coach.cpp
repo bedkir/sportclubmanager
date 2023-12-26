@@ -178,6 +178,8 @@ void Coach::createGroup(string sportName)
 
 	S.close();
 
+	this->groups.push_back("group" + to_string(Group::getAmountOfGroups() + 1));
+
 	Group::setAmountOfGroups();
 }
 
