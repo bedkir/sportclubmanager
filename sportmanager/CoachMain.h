@@ -1,6 +1,7 @@
 #pragma once
 
 #include "CoachAddGroup.h"
+#include "CoachEditGroup.h"
 
 #include <vector>
 
@@ -164,9 +165,9 @@ namespace sportmanager {
 
 	}
 
-private: System::Void CoachMain_Activated(System::Object^ sender, System::EventArgs^ e) 
-{
-	BuildButtons();
-}
+	private: System::Void CoachMain_Activated(System::Object^ sender, System::EventArgs^ e) 
+	{
+		BuildButtons();
+	}
 };
 }

@@ -171,6 +171,9 @@
     <EmbeddedResource Include="CoachAddGroup.resx">
       <DependentUpon>CoachAddGroup.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CoachEditGroup.resx">
+      <DependentUpon>CoachEditGroup.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CoachMain.resx">
       <DependentUpon>CoachMain.h</DependentUpon>
     </EmbeddedResource>
