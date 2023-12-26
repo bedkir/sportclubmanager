@@ -3,6 +3,10 @@
 #include <fstream>
 #include <string>
 
+
+ClubMember& ClubMember::CM = *new ClubMember();
+
+
 ClubMember::ClubMember()
 {
 }
@@ -81,6 +85,7 @@ bool ClubMember::SignIn(string login, string password)
 
 	this->login = login;
 	this->password = password;
+	this->getGroupsListfromFile();
 
 	return true;
 }

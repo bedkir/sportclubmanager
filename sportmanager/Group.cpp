@@ -1,5 +1,9 @@
 #include "Group.h"
 
+
+int Group::amountOfGroups = 0;
+
+
 Group::Group()
 {
 }
@@ -41,6 +45,11 @@ inline Coach Group::getCoach() const
 inline vector<string> Group::getMembers() const
 {
 	return this->members;
+}
+
+int Group::getAmountOfGroups()
+{
+	return amountOfGroups;
 }
 
 inline Group& Group::setSportName(string sportName)

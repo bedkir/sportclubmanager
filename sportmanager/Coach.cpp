@@ -1,7 +1,12 @@
 #include "Coach.h"
+#include "Group.h"
 
 #include <fstream>
 #include <string>
+
+
+Coach& Coach::C = *new Coach();
+
 
 Coach::Coach()
 {
@@ -76,6 +81,7 @@ bool Coach::SignIn(string login, string password)
 
 	this->login = login;
 	this->password = password;
+	this->getGroupsListfromFile();
 
 	return true;
 }
@@ -125,3 +131,21 @@ bool Coach::SignUp(string login, string password, string secPassword, string nam
 }
 
 
+void Coach::createGroup(string sportName)
+{
+	ofstream F;
+	F.open(this->login + ".txt", ofstream::out | ofstream::app);
+
+	F << "group" + to_string(Group::getAmountOfGroups()) << endl;
+
+	F.close();
+
+
+	ofstream T;
+	T.open("group" + to_string(Group::getAmountOfGroups()) + ".txt", ofstream::out | ofstream::app);
+
+	T << sportName << endl << this->name + " " + this->surname
+	  << endl; // for members -> name surname (login)
+
+	T.close();
+}

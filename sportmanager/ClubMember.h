@@ -10,6 +10,8 @@ private:
 	int birthYear;
 
 public:
+	static ClubMember& CM;
+
 	ClubMember();
 	ClubMember(string, string, string, string, int, vector<string>);
 	ClubMember(const ClubMember &);
