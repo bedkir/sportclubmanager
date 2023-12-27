@@ -1,3 +1,4 @@
+  sportmanager.ClubMemberJoin.resources - Embedded, ContainedInManifestFile, 
   sportmanager.ClubMemberMain.resources - Embedded, ContainedInManifestFile, 
   sportmanager.CoachAddGroup.resources - Embedded, ContainedInManifestFile, 
   sportmanager.CoachEditGroup.resources - Embedded, ContainedInManifestFile, 
@@ -25,7 +26,9 @@ Class sportmanager.ClubMemberGroup: AutoLayout, AnsiClass, Class, Public, Before
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class sportmanager.ClubMemberJoin: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(System.Windows.Forms.Form, System.String): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Windows.Forms.Form prevForm : Public
 Class sportmanager.ClubMemberMain: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

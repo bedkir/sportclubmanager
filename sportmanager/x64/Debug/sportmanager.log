@@ -1,4 +1,5 @@
-﻿  ClubMemberMain.cpp
+﻿  ClubMemberJoin.cpp
+  ClubMemberMain.cpp
   LogIn.cpp
   MyForm.cpp
   SignUp.cpp

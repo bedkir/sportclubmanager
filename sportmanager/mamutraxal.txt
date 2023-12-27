@@ -3,4 +3,5 @@ qwerty
 Андрій
 Головайко
 2010
-group1 (group)
+group1 (basketball)
+group3 (football)
