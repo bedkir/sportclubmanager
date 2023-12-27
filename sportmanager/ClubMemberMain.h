@@ -33,13 +33,18 @@ namespace sportmanager {
 		ClubMemberMain(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: добавьте код конструктора
-			//
+
+			myGroups = gcnew List<Button^>();
+			otherGroups = gcnew List<Button^>();
+			
+			BuildMyGroupsButtons();
+			BuildOtherGroupsButtons();
 		}
 
 		void BuildMyGroupsButtons()
 		{
+			this->myGroupsPanel->Controls->Remove(noMyGroups);
+
 			if (ClubMember::CM.getGroups().size() == 0)
 			{
 				Label^ newLabel = gcnew Label();
@@ -47,7 +52,8 @@ namespace sportmanager {
 				newLabel->Name = "noMyGroups";
 				newLabel->Location = Point(0, 0);
 				newLabel->Size = System::Drawing::Size(316, 40);
-				this->myGroupsPanel->Controls->Add(newLabel);
+				noMyGroups = newLabel;
+				this->myGroupsPanel->Controls->Add(noMyGroups);
 			}
 			else
 			{
@@ -75,16 +81,19 @@ namespace sportmanager {
 			}
 		}
 
-		void BuildMyGroupsButtons()
+		void BuildOtherGroupsButtons()
 		{
-			if (ClubMember::CM.getGroups().size() == 0)
+			otherGroupsPanel->Controls->Remove(noOtherGroups);
+
+			if (ClubMember::CM.showAllGroups().size() == 0)
 			{
 				Label^ newLabel = gcnew Label();
-				newLabel->Text = "Ви ще не записались до жодної групи";
-				newLabel->Name = "noMyGroups";
+				newLabel->Text = "Немає груп, у які можна записатися";
+				newLabel->Name = "noOtherGroups";
 				newLabel->Location = Point(0, 0);
 				newLabel->Size = System::Drawing::Size(316, 40);
-				this->myGroupsPanel->Controls->Add(newLabel);
+				noOtherGroups = newLabel;
+				this->otherGroupsPanel->Controls->Add(noOtherGroups);
 			}
 			else
 			{
@@ -93,23 +102,43 @@ namespace sportmanager {
 				int h = 40;
 				int w = 316;
 
-				for (int i = 0; i < ClubMember::CM.getGroups().size(); i++)
+				for (int i = 0; i < ClubMember::CM.showAllGroups().size(); i++)
 				{
 					Button^ newButton = gcnew Button();
 
-					String^ buttonText = gcnew System::String(ClubMember::CM.getGroups()[i].c_str());
+					String^ buttonText = gcnew System::String(ClubMember::CM.showAllGroups()[i].c_str());
 					newButton->Text = buttonText;
 					newButton->Name = "button" + i.ToString();
 					newButton->Location = Point(x, y);
 					newButton->Size = System::Drawing::Size(w, h);
-					newButton->Click += gcnew EventHandler(this, &ClubMemberMain::MyGroupButton_Click);
+					newButton->Click += gcnew EventHandler(this, &ClubMemberMain::OtherGroupButton_Click);
 
-					this->myGroupsPanel->Controls->Add(newButton);
-					myGroups->Add(newButton);
+					this->otherGroupsPanel->Controls->Add(newButton);
+					otherGroups->Add(newButton);
 
 					y += h + 10;
 				}
 			}
+		}
+
+		void DestroyMyGroupsButtons()
+		{
+			for each (Button ^ button in myGroups)
+			{
+				this->myGroupsPanel->Controls->Remove(button);
+			}
+
+			myGroups->Clear();
+		}
+
+		void DestroyOtherGroupsButtons()
+		{
+			for each (Button ^ button in otherGroups)
+			{
+				this->otherGroupsPanel->Controls->Remove(button);
+			}
+
+			otherGroups->Clear();
 		}
 
 	protected:

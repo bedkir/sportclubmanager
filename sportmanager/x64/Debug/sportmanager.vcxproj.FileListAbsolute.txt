@@ -27,3 +27,4 @@ D:\git repos\sportclubmanager\sportmanager\x64\Debug\sportmanager.MyForm.resourc
 D:\git repos\sportclubmanager\sportmanager\x64\Debug\sportmanager.SignUp.resources
 D:\git repos\sportclubmanager\sportmanager\x64\Debug\sportmanager.vcxproj.GenerateResource.cache
 D:\git repos\sportclubmanager\sportmanager\x64\Debug\sportmanager.exe
+D:\OOP\sportclubmanager\sportmanager\x64\Debug\sportmanager.ClubMemberMain.resources

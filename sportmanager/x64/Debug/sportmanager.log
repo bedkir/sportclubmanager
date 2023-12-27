@@ -1,17 +1,7 @@
-﻿  ClubMember.cpp
-  ClubMemberGroup.cpp
-  ClubMemberJoin.cpp
-  ClubMemberMain.cpp
-  Coach.cpp
-  CoachAddGroup.cpp
-  CoachEditGroup.cpp
-  CoachMain.cpp
-  Group.cpp
+﻿  ClubMemberMain.cpp
   LogIn.cpp
   MyForm.cpp
   SignUp.cpp
-  User.cpp
-  .NETFramework,Version=v4.7.2.AssemblyAttributes.cpp
   Создание кода...
   ClubMember.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
-  sportmanager.vcxproj -> D:\git repos\sportclubmanager\sportmanager\x64\Debug\sportmanager.exe
+  sportmanager.vcxproj -> D:\OOP\sportclubmanager\sportmanager\x64\Debug\sportmanager.exe
