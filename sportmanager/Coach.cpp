@@ -212,26 +212,6 @@ vector<string> Coach::openGroup(string groupName)
 	Group group;
 	group.fillGroupData(groupName);
 	return group.getMembers();
-	/*vector<string> result;
-
-	ifstream F;
-	F.open(groupName + ".txt", ofstream::out | ofstream::app);
-
-	string line;
-
-	getline(F, line);
-	getline(F, line);
-
-	while (true)
-	{
-		getline(F, line);
-		if (line == "") break;
-		result.push_back(line);
-	}
-
-	F.close();
-
-	return result;*/
 }
 
 
