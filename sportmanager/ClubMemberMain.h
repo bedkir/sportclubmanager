@@ -53,7 +53,7 @@ namespace sportmanager {
 				newLabel->Text = "Ви ще не записались до жодної групи";
 				newLabel->Name = "noMyGroups";
 				newLabel->Location = Point(0, 0);
-				newLabel->Size = System::Drawing::Size(316, 40);
+				newLabel->Size = System::Drawing::Size(296, 40);
 				noMyGroups = newLabel;
 				this->myGroupsPanel->Controls->Add(noMyGroups);
 			}
@@ -62,7 +62,7 @@ namespace sportmanager {
 				int x = 0;
 				int y = 0;
 				int h = 40;
-				int w = 316;
+				int w = 296;
 
 				for (int i = 0; i < ClubMember::CM.getGroups().size(); i++)
 				{
@@ -93,7 +93,7 @@ namespace sportmanager {
 				newLabel->Text = "Немає груп, у які можна записатися";
 				newLabel->Name = "noOtherGroups";
 				newLabel->Location = Point(0, 0);
-				newLabel->Size = System::Drawing::Size(316, 40);
+				newLabel->Size = System::Drawing::Size(296, 40);
 				noOtherGroups = newLabel;
 				this->otherGroupsPanel->Controls->Add(noOtherGroups);
 			}
@@ -102,7 +102,7 @@ namespace sportmanager {
 				int x = 0;
 				int y = 0;
 				int h = 40;
-				int w = 316;
+				int w = 296;
 
 				for (int i = 0; i < ClubMember::CM.showAvailableGroups().size(); i++)
 				{
@@ -196,6 +196,7 @@ namespace sportmanager {
 			// 
 			// myGroupsPanel
 			// 
+			this->myGroupsPanel->AutoScroll = true;
 			this->myGroupsPanel->Location = System::Drawing::Point(30, 72);
 			this->myGroupsPanel->Name = L"myGroupsPanel";
 			this->myGroupsPanel->Size = System::Drawing::Size(316, 356);
@@ -225,6 +226,7 @@ namespace sportmanager {
 			// 
 			// otherGroupsPanel
 			// 
+			this->otherGroupsPanel->AutoScroll = true;
 			this->otherGroupsPanel->Location = System::Drawing::Point(435, 72);
 			this->otherGroupsPanel->Name = L"otherGroupsPanel";
 			this->otherGroupsPanel->Size = System::Drawing::Size(316, 356);
@@ -258,7 +260,11 @@ namespace sportmanager {
 
 	void MyGroupButton_Click(System::Object^ sender, System::EventArgs^ e)
 	{
+		Button^ thisButton = safe_cast<Button^>(sender);
 
+		this->Hide();
+		ClubMemberGroup^ form = gcnew ClubMemberGroup(this, thisButton->Text);
+		form->ShowDialog();
 	}
 
 	void OtherGroupButton_Click(System::Object^ sender, System::EventArgs^ e)

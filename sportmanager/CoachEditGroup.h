@@ -73,7 +73,7 @@ namespace sportmanager {
 				newLabel->Text = labelText;
 				newLabel->Name = "labelNoGroups";
 				newLabel->Location = Point(0, 0);
-				newLabel->Size = System::Drawing::Size(266, 40);
+				newLabel->Size = System::Drawing::Size(246, 40);
 				this->membersPanel->Controls->Add(newLabel);
 			}
 			else
@@ -81,7 +81,7 @@ namespace sportmanager {
 				int x = 0;
 				int y = 0;
 				int h = 40;
-				int w = 266;
+				int w = 246;
 
 				for (int i = 0; i < members.size(); i++)
 				{
@@ -213,6 +213,7 @@ namespace sportmanager {
 			// 
 			// membersPanel
 			// 
+			this->membersPanel->AutoScroll = true;
 			this->membersPanel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->membersPanel->Location = System::Drawing::Point(56, 109);

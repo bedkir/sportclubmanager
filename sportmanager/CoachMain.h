@@ -40,7 +40,7 @@ namespace sportmanager {
 				newLabel->Text = "У Вас ще не має груп";
 				newLabel->Name = "labelNoGroups";
 				newLabel->Location = Point(0, 0);
-				newLabel->Size = System::Drawing::Size(384, 40);
+				newLabel->Size = System::Drawing::Size(364, 40);
 				noMembers = newLabel;
 				this->groupsPanel->Controls->Add(noMembers);
 			}
@@ -49,7 +49,7 @@ namespace sportmanager {
 				int x = 0;
 				int y = 0;
 				int h = 40;
-				int w = 384;
+				int w = 364;
 
 				for (int i = 0; i < groups.size(); i++)
 				{
@@ -120,6 +120,7 @@ namespace sportmanager {
 			// 
 			// groupsPanel
 			// 
+			this->groupsPanel->AutoScroll = true;
 			this->groupsPanel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->groupsPanel->Location = System::Drawing::Point(40, 47);

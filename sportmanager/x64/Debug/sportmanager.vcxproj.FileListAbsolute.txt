@@ -29,3 +29,4 @@ D:\git repos\sportclubmanager\sportmanager\x64\Debug\sportmanager.vcxproj.Genera
 D:\git repos\sportclubmanager\sportmanager\x64\Debug\sportmanager.exe
 D:\OOP\sportclubmanager\sportmanager\x64\Debug\sportmanager.ClubMemberMain.resources
 D:\OOP\sportclubmanager\sportmanager\x64\Debug\sportmanager.ClubMemberJoin.resources
+D:\OOP\sportclubmanager\sportmanager\x64\Debug\sportmanager.ClubMemberGroup.resources
