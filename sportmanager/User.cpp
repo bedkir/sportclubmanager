@@ -138,4 +138,6 @@ void User::deleteMember(string groupName, string login, string name, string surn
 
 	K.close();
 	temp.clear();
+
+	this->getGroupsListFromFile();
 }
