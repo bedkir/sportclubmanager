@@ -1,6 +1,8 @@
 #pragma once
 
 #include "ClubMember.h"
+#include "ClubMemberJoin.h"
+#include "ClubMemberGroup.h"
 
 #include <string>
 #include <vector>
@@ -85,7 +87,7 @@ namespace sportmanager {
 		{
 			otherGroupsPanel->Controls->Remove(noOtherGroups);
 
-			if (ClubMember::CM.showAllGroups().size() == 0)
+			if (ClubMember::CM.showAvailableGroups().size() == 0)
 			{
 				Label^ newLabel = gcnew Label();
 				newLabel->Text = "Немає груп, у які можна записатися";
@@ -102,11 +104,11 @@ namespace sportmanager {
 				int h = 40;
 				int w = 316;
 
-				for (int i = 0; i < ClubMember::CM.showAllGroups().size(); i++)
+				for (int i = 0; i < ClubMember::CM.showAvailableGroups().size(); i++)
 				{
 					Button^ newButton = gcnew Button();
 
-					String^ buttonText = gcnew System::String(ClubMember::CM.showAllGroups()[i].c_str());
+					String^ buttonText = gcnew System::String(ClubMember::CM.showAvailableGroups()[i].c_str());
 					newButton->Text = buttonText;
 					newButton->Name = "button" + i.ToString();
 					newButton->Location = Point(x, y);
@@ -242,6 +244,7 @@ namespace sportmanager {
 				static_cast<System::Byte>(204)));
 			this->Name = L"ClubMemberMain";
 			this->Text = L"ClubMemberMain";
+			this->Activated += gcnew System::EventHandler(this, &ClubMemberMain::ClubMemberMain_Activated);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -260,7 +263,19 @@ namespace sportmanager {
 
 	void OtherGroupButton_Click(System::Object^ sender, System::EventArgs^ e)
 	{
+		Button^ thisButton = safe_cast<Button^>(sender);
 
+		this->Hide();
+		ClubMemberJoin^ form = gcnew ClubMemberJoin(this, thisButton->Text);
+		form->ShowDialog();
+	}
+
+	private: System::Void ClubMemberMain_Activated(System::Object^ sender, System::EventArgs^ e) 
+	{
+		DestroyMyGroupsButtons();
+		DestroyOtherGroupsButtons();
+		BuildMyGroupsButtons();
+		BuildOtherGroupsButtons();
 	}
 };
 }

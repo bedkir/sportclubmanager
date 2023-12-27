@@ -168,6 +168,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ClubMemberJoin.resx">
+      <DependentUpon>ClubMemberJoin.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ClubMemberMain.resx">
       <DependentUpon>ClubMemberMain.h</DependentUpon>
     </EmbeddedResource>
