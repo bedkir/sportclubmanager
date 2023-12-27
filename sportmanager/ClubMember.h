@@ -25,8 +25,8 @@ public:
 	bool SignUp(string, string, string, string, string, int);
 
 	void getGroupsListFromFile() override;
-	vector<string> showAllGroups();
+	vector<string> showAvailableGroups();
 	vector<string> searchGroup(string);
-	void enterTheGroup(string);
+	void enterTheGroup(string, string);
 	Group groupInfo(string);
 };

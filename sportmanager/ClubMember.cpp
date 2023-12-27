@@ -178,7 +178,7 @@ void ClubMember::getGroupsListFromFile()
 	this->groups = groupsList;
 }
 
-vector<string> ClubMember::showAllGroups()
+vector<string> ClubMember::showAvailableGroups()
 {
 	vector<string> myGroups, result;
 
@@ -245,13 +245,13 @@ vector<string> ClubMember::searchGroup(string request)
 	return result;
 }
 
-void ClubMember::enterTheGroup(string groupName)
+void ClubMember::enterTheGroup(string groupName, string fullGroupName)
 {
 	ofstream F;
 	F.open(this->login + ".txt", ofstream::out | ofstream::app);
 
-	F << groupName << endl;
-
+	F << fullGroupName << endl;
+	
 	F.close();
 
 	ofstream T;
