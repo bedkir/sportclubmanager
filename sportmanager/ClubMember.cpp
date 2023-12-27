@@ -180,7 +180,7 @@ void ClubMember::getGroupsListFromFile()
 
 vector<string> ClubMember::showAllGroups()
 {
-	vector<string> result;
+	vector<string> myGroups, result;
 
 	ifstream F;
 	F.open("groups.txt", ofstream::out | ofstream::app);
@@ -195,6 +195,27 @@ vector<string> ClubMember::showAllGroups()
 	}
 
 	F.close();
+
+	ifstream S;
+	S.open(this->login + ".txt", ofstream::out | ofstream::app);
+
+	while (true)
+	{
+		getline(S, line);
+		if (line == "") break;
+		myGroups.push_back(line);
+	}
+
+	S.close();
+
+	for (int i = 0; i < result.size(); i++)
+	{
+		for (int j = 0; j < myGroups.size(); j++)
+		{
+			if (result.at(i) == myGroups.at(j))
+				result.erase(result.begin() + i);
+		}
+	}
 
 	return result;
 }
