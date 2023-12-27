@@ -261,6 +261,8 @@ void ClubMember::enterTheGroup(string groupName, string fullGroupName)
 	  << endl;
 
 	T.close();
+
+	this->groups.push_back(groupName);
 }
 
 Group ClubMember::groupInfo(string groupName)
