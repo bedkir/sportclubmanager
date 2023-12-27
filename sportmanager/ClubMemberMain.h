@@ -1,5 +1,15 @@
 #pragma once
 
+#include "ClubMember.h"
+
+#include <string>
+#include <vector>
+#include <msclr/marshal.h>
+#include <msclr\marshal_cppstd.h>
+
+using namespace System::Collections::Generic;
+using namespace System::Text;
+
 namespace sportmanager {
 
 	using namespace System;
@@ -15,12 +25,91 @@ namespace sportmanager {
 	public ref class ClubMemberMain : public System::Windows::Forms::Form
 	{
 	public:
+		List<Button^>^ myGroups;
+		List<Button^>^ otherGroups;
+		Label^ noMyGroups;
+		Label^ noOtherGroups;
+
 		ClubMemberMain(void)
 		{
 			InitializeComponent();
 			//
 			//TODO: добавьте код конструктора
 			//
+		}
+
+		void BuildMyGroupsButtons()
+		{
+			if (ClubMember::CM.getGroups().size() == 0)
+			{
+				Label^ newLabel = gcnew Label();
+				newLabel->Text = "Ви ще не записались до жодної групи";
+				newLabel->Name = "noMyGroups";
+				newLabel->Location = Point(0, 0);
+				newLabel->Size = System::Drawing::Size(316, 40);
+				this->myGroupsPanel->Controls->Add(newLabel);
+			}
+			else
+			{
+				int x = 0;
+				int y = 0;
+				int h = 40;
+				int w = 316;
+
+				for (int i = 0; i < ClubMember::CM.getGroups().size(); i++)
+				{
+					Button^ newButton = gcnew Button();
+
+					String^ buttonText = gcnew System::String(ClubMember::CM.getGroups()[i].c_str());
+					newButton->Text = buttonText;
+					newButton->Name = "button" + i.ToString();
+					newButton->Location = Point(x, y);
+					newButton->Size = System::Drawing::Size(w, h);
+					newButton->Click += gcnew EventHandler(this, &ClubMemberMain::MyGroupButton_Click);
+
+					this->myGroupsPanel->Controls->Add(newButton);
+					myGroups->Add(newButton);
+
+					y += h + 10;
+				}
+			}
+		}
+
+		void BuildMyGroupsButtons()
+		{
+			if (ClubMember::CM.getGroups().size() == 0)
+			{
+				Label^ newLabel = gcnew Label();
+				newLabel->Text = "Ви ще не записались до жодної групи";
+				newLabel->Name = "noMyGroups";
+				newLabel->Location = Point(0, 0);
+				newLabel->Size = System::Drawing::Size(316, 40);
+				this->myGroupsPanel->Controls->Add(newLabel);
+			}
+			else
+			{
+				int x = 0;
+				int y = 0;
+				int h = 40;
+				int w = 316;
+
+				for (int i = 0; i < ClubMember::CM.getGroups().size(); i++)
+				{
+					Button^ newButton = gcnew Button();
+
+					String^ buttonText = gcnew System::String(ClubMember::CM.getGroups()[i].c_str());
+					newButton->Text = buttonText;
+					newButton->Name = "button" + i.ToString();
+					newButton->Location = Point(x, y);
+					newButton->Size = System::Drawing::Size(w, h);
+					newButton->Click += gcnew EventHandler(this, &ClubMemberMain::MyGroupButton_Click);
+
+					this->myGroupsPanel->Controls->Add(newButton);
+					myGroups->Add(newButton);
+
+					y += h + 10;
+				}
+			}
 		}
 
 	protected:
@@ -34,6 +123,14 @@ namespace sportmanager {
 				delete components;
 			}
 		}
+	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Panel^ myGroupsPanel;
+	protected:
+
+	private: System::Windows::Forms::TextBox^ textBox1;
+	private: System::Windows::Forms::Button^ buttonSearch;
+	private: System::Windows::Forms::Panel^ otherGroupsPanel;
+
 
 	private:
 		/// <summary>
@@ -48,12 +145,93 @@ namespace sportmanager {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->components = gcnew System::ComponentModel::Container();
-			this->Size = System::Drawing::Size(300,300);
-			this->Text = L"ClubMemberMain";
-			this->Padding = System::Windows::Forms::Padding(0);
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->myGroupsPanel = (gcnew System::Windows::Forms::Panel());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->buttonSearch = (gcnew System::Windows::Forms::Button());
+			this->otherGroupsPanel = (gcnew System::Windows::Forms::Panel());
+			this->SuspendLayout();
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label1->Location = System::Drawing::Point(26, 32);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(111, 24);
+			this->label1->TabIndex = 0;
+			this->label1->Text = L"Ваші групи:";
+			// 
+			// myGroupsPanel
+			// 
+			this->myGroupsPanel->Location = System::Drawing::Point(30, 72);
+			this->myGroupsPanel->Name = L"myGroupsPanel";
+			this->myGroupsPanel->Size = System::Drawing::Size(316, 356);
+			this->myGroupsPanel->TabIndex = 1;
+			// 
+			// textBox1
+			// 
+			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->textBox1->Location = System::Drawing::Point(435, 26);
+			this->textBox1->Multiline = true;
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(229, 30);
+			this->textBox1->TabIndex = 2;
+			// 
+			// buttonSearch
+			// 
+			this->buttonSearch->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->buttonSearch->Location = System::Drawing::Point(670, 26);
+			this->buttonSearch->Name = L"buttonSearch";
+			this->buttonSearch->Size = System::Drawing::Size(81, 30);
+			this->buttonSearch->TabIndex = 3;
+			this->buttonSearch->Text = L"Пошук";
+			this->buttonSearch->UseVisualStyleBackColor = true;
+			this->buttonSearch->Click += gcnew System::EventHandler(this, &ClubMemberMain::buttonSearch_Click);
+			// 
+			// otherGroupsPanel
+			// 
+			this->otherGroupsPanel->Location = System::Drawing::Point(435, 72);
+			this->otherGroupsPanel->Name = L"otherGroupsPanel";
+			this->otherGroupsPanel->Size = System::Drawing::Size(316, 356);
+			this->otherGroupsPanel->TabIndex = 4;
+			// 
+			// ClubMemberMain
+			// 
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->ClientSize = System::Drawing::Size(789, 440);
+			this->Controls->Add(this->otherGroupsPanel);
+			this->Controls->Add(this->buttonSearch);
+			this->Controls->Add(this->textBox1);
+			this->Controls->Add(this->myGroupsPanel);
+			this->Controls->Add(this->label1);
+			this->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->Name = L"ClubMemberMain";
+			this->Text = L"ClubMemberMain";
+			this->ResumeLayout(false);
+			this->PerformLayout();
+
 		}
 #pragma endregion
-	};
+	
+	private: System::Void buttonSearch_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
+
+	}
+
+	void MyGroupButton_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+
+	}
+
+	void OtherGroupButton_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+
+	}
+};
 }
