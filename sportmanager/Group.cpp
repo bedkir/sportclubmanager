@@ -75,7 +75,8 @@ void Group::setAmountOfGroups()
 
 	F.close();
 
-	Group::amountOfGroups = stoi(prev_line.erase(0, 5));
+	if (prev_line != "")
+		Group::amountOfGroups = stoi(prev_line.erase(0, 5));
 }
 
 inline Group& Group::setSportName(string sportName)
