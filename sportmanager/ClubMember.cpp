@@ -213,7 +213,7 @@ vector<string> ClubMember::showAvailableGroups()
 
 vector<string> ClubMember::searchGroup(string request)
 {
-	vector<string> result;
+	vector<string> searchResult, result;
 
 	ifstream F;
 	F.open("groups.txt", ofstream::out | ofstream::app);
@@ -227,11 +227,23 @@ vector<string> ClubMember::searchGroup(string request)
 		size_t found = line.find(request);
 
 		if (found != string::npos) {
-			result.push_back(line);
+			searchResult.push_back(line);
 		}
 	}
 
 	F.close();
+
+	for (int i = 0; i < searchResult.size(); i++)
+	{
+		bool isInside = false;
+		for (int j = 0; j < this->groups.size(); j++)
+		{
+			if (searchResult.at(i) == this->groups.at(j))
+				isInside = true;
+		}
+		if (!isInside)
+			result.push_back(searchResult.at(i));
+	}
 
 	return result;
 }
