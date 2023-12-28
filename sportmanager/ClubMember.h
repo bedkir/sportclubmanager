@@ -29,4 +29,7 @@ public:
 	vector<string> searchGroup(string);
 	void enterTheGroup(string, string);
 	Group groupInfo(string);
+
+	friend ostream& operator<<(ostream&, const ClubMember&);
+	friend istream& operator>>(istream&, ClubMember&);
 };

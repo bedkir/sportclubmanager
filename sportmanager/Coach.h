@@ -25,5 +25,8 @@ public:
 	vector<string> searchMembers(string, string);
 	vector<string> sortMembers(string);
 	vector<string> getInfoOfMember(string);
+
+	friend ostream& operator<<(ostream&, const Coach&);
+	friend istream& operator>>(istream&, Coach&);
 };
 

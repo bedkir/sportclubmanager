@@ -277,3 +277,29 @@ Group ClubMember::groupInfo(string groupName)
 	group.fillGroupData(groupName);
 	return group;
 }
+
+ostream& operator<<(ostream& os, const ClubMember& member)
+{
+	os << "Учень: " << member.getName() + " " + member.getSurname() << endl;
+	os << "Логін: " << member.getLogin() << endl;
+	os << "Рік народження: " << member.getBirthYear() << endl;
+	os << "Його групи:" << endl;
+	for (int i = 0; i < member.getGroups().size(); i++)
+		os << member.getGroups()[i] << endl;
+
+	return os;
+}
+
+istream& operator>>(istream& is, ClubMember& member)
+{
+	cout << "Логін: ";
+	is >> member.login;
+	cout << "Пароль: ";
+	is >> member.password;
+	cout << "Ім'я: ";
+	is >> member.name;
+	cout << "Прізвище: ";
+	is >> member.surname;
+
+	return is;
+}

@@ -21,6 +21,9 @@ public:
 	Group(Group &);
 	virtual ~Group();
 
+	Group& operator++();
+	Group operator++(int);
+
 	inline string getSportName() const;
 	inline string getGroupName() const;
 	inline Coach getCoach() const;

@@ -31,6 +31,19 @@ Group::~Group()
 	this->members.clear();
 }
 
+Group& Group::operator++()
+{
+	amountOfGroups++;
+	return *this;
+}
+
+Group Group::operator++(int)
+{
+	Group temp = *this;
+	amountOfGroups++;
+	return temp;
+}
+
 inline string Group::getSportName() const
 {
 	return this->sportName;

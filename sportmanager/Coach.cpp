@@ -293,3 +293,28 @@ vector<string> Coach::getInfoOfMember(string login)
 
 	return result;
 }
+
+ostream& operator<<(ostream& os, const Coach& coach)
+{
+	os << "Тренер: " << coach.getName() + " " + coach.getSurname() << endl;
+	os << "Логін: " << coach.getLogin() << endl;
+	os << "Його групи:" << endl;
+	for (int i = 0; i < coach.getGroups().size(); i++)
+		os << coach.getGroups()[i] << endl;
+
+	return os;
+}
+
+istream& operator>>(istream& is, Coach& coach)
+{
+	cout << "Логін: ";
+	is >> coach.login;
+	cout << "Пароль: ";
+	is >> coach.password;
+	cout << "Ім'я: ";
+	is >> coach.name;
+	cout << "Прізвище: ";
+	is >> coach.surname;
+	
+	return is;
+}

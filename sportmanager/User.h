@@ -23,6 +23,8 @@ public:
 
 	string operator[](int index) const;
 
+	bool operator==(const User&) const;
+
 	inline string getLogin() const;
 	inline string getPassword() const;
 	inline string getName() const;
