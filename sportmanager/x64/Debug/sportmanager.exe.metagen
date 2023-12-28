@@ -40,7 +40,7 @@ Class sportmanager.ClubMemberMain: AutoLayout, AnsiClass, Class, Public, BeforeF
     System.Windows.Forms.Label noOtherGroups : Public
   Methods:
     BuildMyGroupsButtons(): PrivateScope, Public, HideBySig
-    BuildOtherGroupsButtons(): PrivateScope, Public, HideBySig
+    BuildOtherGroupsButtons(vector<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> >\,std::allocator<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> > > >*, String): PrivateScope, Public, HideBySig
     DestroyMyGroupsButtons(): PrivateScope, Public, HideBySig
     DestroyOtherGroupsButtons(): PrivateScope, Public, HideBySig
 Class sportmanager.CoachAddGroup: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit

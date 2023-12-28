@@ -40,7 +40,7 @@ namespace sportmanager {
 			otherGroups = gcnew List<Button^>();
 			
 			BuildMyGroupsButtons();
-			BuildOtherGroupsButtons();
+			BuildOtherGroupsButtons(ClubMember::CM.showAvailableGroups(), "Немає груп, у які можна записатися");
 		}
 
 		void BuildMyGroupsButtons()
@@ -53,7 +53,7 @@ namespace sportmanager {
 				newLabel->Text = "Ви ще не записались до жодної групи";
 				newLabel->Name = "noMyGroups";
 				newLabel->Location = Point(0, 0);
-				newLabel->Size = System::Drawing::Size(296, 40);
+				newLabel->Size = System::Drawing::Size(217, 40);
 				noMyGroups = newLabel;
 				this->myGroupsPanel->Controls->Add(noMyGroups);
 			}
@@ -62,7 +62,7 @@ namespace sportmanager {
 				int x = 0;
 				int y = 0;
 				int h = 40;
-				int w = 296;
+				int w = 217;
 
 				for (int i = 0; i < ClubMember::CM.getGroups().size(); i++)
 				{
@@ -83,17 +83,17 @@ namespace sportmanager {
 			}
 		}
 
-		void BuildOtherGroupsButtons()
+		void BuildOtherGroupsButtons(vector<string> groups, String^ labelText)
 		{
 			otherGroupsPanel->Controls->Remove(noOtherGroups);
 
-			if (ClubMember::CM.showAvailableGroups().size() == 0)
+			if (groups.size() == 0)
 			{
 				Label^ newLabel = gcnew Label();
-				newLabel->Text = "Немає груп, у які можна записатися";
+				newLabel->Text = labelText;
 				newLabel->Name = "noOtherGroups";
 				newLabel->Location = Point(0, 0);
-				newLabel->Size = System::Drawing::Size(296, 40);
+				newLabel->Size = System::Drawing::Size(217, 40);
 				noOtherGroups = newLabel;
 				this->otherGroupsPanel->Controls->Add(noOtherGroups);
 			}
@@ -102,13 +102,13 @@ namespace sportmanager {
 				int x = 0;
 				int y = 0;
 				int h = 40;
-				int w = 296;
+				int w = 217;
 
-				for (int i = 0; i < ClubMember::CM.showAvailableGroups().size(); i++)
+				for (int i = 0; i < groups.size(); i++)
 				{
 					Button^ newButton = gcnew Button();
 
-					String^ buttonText = gcnew System::String(ClubMember::CM.showAvailableGroups()[i].c_str());
+					String^ buttonText = gcnew System::String(groups[i].c_str());
 					newButton->Text = buttonText;
 					newButton->Name = "button" + i.ToString();
 					newButton->Location = Point(x, y);
@@ -156,9 +156,10 @@ namespace sportmanager {
 		}
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Panel^ myGroupsPanel;
+private: System::Windows::Forms::TextBox^ textBoxSearch;
 	protected:
 
-	private: System::Windows::Forms::TextBox^ textBox1;
+
 	private: System::Windows::Forms::Button^ buttonSearch;
 	private: System::Windows::Forms::Panel^ otherGroupsPanel;
 
@@ -178,7 +179,7 @@ namespace sportmanager {
 		{
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->myGroupsPanel = (gcnew System::Windows::Forms::Panel());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->textBoxSearch = (gcnew System::Windows::Forms::TextBox());
 			this->buttonSearch = (gcnew System::Windows::Forms::Button());
 			this->otherGroupsPanel = (gcnew System::Windows::Forms::Panel());
 			this->SuspendLayout();
@@ -188,37 +189,43 @@ namespace sportmanager {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label1->Location = System::Drawing::Point(26, 32);
+			this->label1->Location = System::Drawing::Point(20, 24);
+			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(146, 29);
+			this->label1->Size = System::Drawing::Size(111, 24);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Ваші групи:";
 			// 
 			// myGroupsPanel
 			// 
 			this->myGroupsPanel->AutoScroll = true;
-			this->myGroupsPanel->Location = System::Drawing::Point(30, 72);
+			this->myGroupsPanel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->myGroupsPanel->Location = System::Drawing::Point(22, 55);
+			this->myGroupsPanel->Margin = System::Windows::Forms::Padding(2);
 			this->myGroupsPanel->Name = L"myGroupsPanel";
-			this->myGroupsPanel->Size = System::Drawing::Size(316, 356);
+			this->myGroupsPanel->Size = System::Drawing::Size(237, 272);
 			this->myGroupsPanel->TabIndex = 1;
 			// 
-			// textBox1
+			// textBoxSearch
 			// 
-			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->textBoxSearch->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->textBox1->Location = System::Drawing::Point(435, 26);
-			this->textBox1->Multiline = true;
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(229, 30);
-			this->textBox1->TabIndex = 2;
+			this->textBoxSearch->Location = System::Drawing::Point(326, 20);
+			this->textBoxSearch->Margin = System::Windows::Forms::Padding(2);
+			this->textBoxSearch->Multiline = true;
+			this->textBoxSearch->Name = L"textBoxSearch";
+			this->textBoxSearch->Size = System::Drawing::Size(160, 31);
+			this->textBoxSearch->TabIndex = 2;
 			// 
 			// buttonSearch
 			// 
 			this->buttonSearch->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->buttonSearch->Location = System::Drawing::Point(670, 26);
+			this->buttonSearch->Location = System::Drawing::Point(490, 20);
+			this->buttonSearch->Margin = System::Windows::Forms::Padding(2);
 			this->buttonSearch->Name = L"buttonSearch";
-			this->buttonSearch->Size = System::Drawing::Size(81, 30);
+			this->buttonSearch->Size = System::Drawing::Size(73, 31);
 			this->buttonSearch->TabIndex = 3;
 			this->buttonSearch->Text = L"Пошук";
 			this->buttonSearch->UseVisualStyleBackColor = true;
@@ -227,24 +234,27 @@ namespace sportmanager {
 			// otherGroupsPanel
 			// 
 			this->otherGroupsPanel->AutoScroll = true;
-			this->otherGroupsPanel->Location = System::Drawing::Point(435, 72);
+			this->otherGroupsPanel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
+			this->otherGroupsPanel->Location = System::Drawing::Point(326, 55);
+			this->otherGroupsPanel->Margin = System::Windows::Forms::Padding(2);
 			this->otherGroupsPanel->Name = L"otherGroupsPanel";
-			this->otherGroupsPanel->Size = System::Drawing::Size(316, 356);
+			this->otherGroupsPanel->Size = System::Drawing::Size(237, 272);
 			this->otherGroupsPanel->TabIndex = 4;
-			this->otherGroupsPanel->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &ClubMemberMain::otherGroupsPanel_Paint);
 			// 
 			// ClubMemberMain
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 17);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(789, 440);
+			this->ClientSize = System::Drawing::Size(592, 336);
 			this->Controls->Add(this->otherGroupsPanel);
 			this->Controls->Add(this->buttonSearch);
-			this->Controls->Add(this->textBox1);
+			this->Controls->Add(this->textBoxSearch);
 			this->Controls->Add(this->myGroupsPanel);
 			this->Controls->Add(this->label1);
 			this->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"ClubMemberMain";
 			this->Text = L"ClubMemberMain";
 			this->Activated += gcnew System::EventHandler(this, &ClubMemberMain::ClubMemberMain_Activated);
@@ -256,7 +266,20 @@ namespace sportmanager {
 	
 	private: System::Void buttonSearch_Click(System::Object^ sender, System::EventArgs^ e) 
 	{
+		string request = msclr::interop::marshal_as<std::string>(this->textBoxSearch->Text);
 
+		if (request == "")
+		{
+			DestroyOtherGroupsButtons();
+			BuildOtherGroupsButtons(ClubMember::CM.showAvailableGroups(), "Немає груп, у які можна записатися");
+		}
+		else
+		{
+			vector<string> result = ClubMember::CM.searchGroup(request);
+
+			DestroyOtherGroupsButtons();
+			BuildOtherGroupsButtons(result, "За Вашим запитом нічого не знайдено");
+		}
 	}
 
 	void MyGroupButton_Click(System::Object^ sender, System::EventArgs^ e)
@@ -282,9 +305,7 @@ namespace sportmanager {
 		DestroyMyGroupsButtons();
 		DestroyOtherGroupsButtons();
 		BuildMyGroupsButtons();
-		BuildOtherGroupsButtons();
+		BuildOtherGroupsButtons(ClubMember::CM.showAvailableGroups(), "Немає груп, у які можна записатися");
 	}
-private: System::Void otherGroupsPanel_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-}
 };
 }

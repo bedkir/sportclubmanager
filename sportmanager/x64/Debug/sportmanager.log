@@ -1,3 +1,7 @@
-﻿  ClubMember.cpp
+﻿  ClubMemberMain.cpp
+  LogIn.cpp
+  MyForm.cpp
+  SignUp.cpp
+  Создание кода...
   ClubMember.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
-  sportmanager.vcxproj -> D:\git repos\sportclubmanager\sportmanager\x64\Debug\sportmanager.exe
+  sportmanager.vcxproj -> D:\OOP\sportclubmanager\sportmanager\x64\Debug\sportmanager.exe
