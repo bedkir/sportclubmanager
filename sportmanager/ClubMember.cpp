@@ -47,7 +47,7 @@ inline ClubMember& ClubMember::setBirthYear(int birthYear)
 bool containsMember(string login)
 {
 	ifstream F;
-	F.open("Members.txt", ifstream::app);
+	F.open("Members.txt");
 
 
 	string line;
