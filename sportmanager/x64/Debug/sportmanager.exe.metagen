@@ -1,0 +1,77 @@
+  sportmanager.ClubMemberGroup.resources - Embedded, ContainedInManifestFile, 
+  sportmanager.ClubMemberJoin.resources - Embedded, ContainedInManifestFile, 
+  sportmanager.ClubMemberMain.resources - Embedded, ContainedInManifestFile, 
+  sportmanager.CoachAddGroup.resources - Embedded, ContainedInManifestFile, 
+  sportmanager.CoachEditGroup.resources - Embedded, ContainedInManifestFile, 
+  sportmanager.CoachMain.resources - Embedded, ContainedInManifestFile, 
+  sportmanager.LogIn.resources - Embedded, ContainedInManifestFile, 
+  sportmanager.MyForm.resources - Embedded, ContainedInManifestFile, 
+  sportmanager.SignUp.resources - Embedded, ContainedInManifestFile, 
+ImageRuntimeVersion: v4.0.30319
+Assembly sportmanager, Version=0.0.*, Culture=Инвариантный язык (Инвариантная страна): 
+	hash=SHA1, flags=PublicKey
+Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a: 
+	hash=None, flags=None
+Assembly System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Class sportmanager.ClubMemberGroup: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(System.Windows.Forms.Form, System.String): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class sportmanager.ClubMemberJoin: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(System.Windows.Forms.Form, System.String): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Windows.Forms.Form prevForm : Public
+Class sportmanager.ClubMemberMain: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Collections.Generic.List`1[System.Windows.Forms.Button] myGroups : Public
+    System.Collections.Generic.List`1[System.Windows.Forms.Button] otherGroups : Public
+    System.Windows.Forms.Label noMyGroups : Public
+    System.Windows.Forms.Label noOtherGroups : Public
+  Methods:
+    BuildMyGroupsButtons(): PrivateScope, Public, HideBySig
+    BuildOtherGroupsButtons(vector<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> >\,std::allocator<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> > > >*, String): PrivateScope, Public, HideBySig
+    DestroyMyGroupsButtons(): PrivateScope, Public, HideBySig
+    DestroyOtherGroupsButtons(): PrivateScope, Public, HideBySig
+Class sportmanager.CoachAddGroup: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(System.Windows.Forms.Form): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Windows.Forms.Form prevForm : Public
+Class sportmanager.CoachEditGroup: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(System.Windows.Forms.Form, System.String): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Windows.Forms.Form prevForm : Public
+    System.String groupName : Public
+    System.Collections.Generic.List`1[System.Windows.Forms.Button] memberButtons : Public
+  Methods:
+    BuildButtons(vector<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> >\,std::allocator<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> > > >*, String): PrivateScope, Public, HideBySig
+    DestroyButtons(): PrivateScope, Public, HideBySig
+    SetActive(Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig
+Class sportmanager.CoachMain: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Windows.Forms.Label noMembers : Public
+  Methods:
+    BuildButtons(): PrivateScope, Public, HideBySig
+Class sportmanager.LogIn: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class sportmanager.SignUp: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class sportmanager.MyForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
