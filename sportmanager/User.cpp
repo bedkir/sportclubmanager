@@ -28,6 +28,11 @@ User::~User()
 {
 }
 
+string User::operator[](int index) const
+{
+	return this->groups.at(index);
+}
+
 inline string User::getLogin() const
 {
 	return this->login;

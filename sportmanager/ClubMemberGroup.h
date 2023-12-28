@@ -37,7 +37,8 @@ namespace sportmanager {
 
 			Group g = ClubMember::CM.groupInfo(groupName);
 
-			this->labelCoach->Text = gcnew System::String(g.getCoach().c_str());
+			string fullCoachName = g.getCoach().getName() + " " + g.getCoach().getSurname();
+			this->labelCoach->Text = gcnew System::String(fullCoachName.c_str());
 
 			int x = 0;
 			int y = 0;

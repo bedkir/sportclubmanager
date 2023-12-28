@@ -4,5 +4,5 @@ qwerty
 Головайко
 2010
 group3 (football)
-group8 (babax)
 group1 (basketball)
+group8 (babax)

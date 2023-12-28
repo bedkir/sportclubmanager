@@ -37,6 +37,8 @@ Coach& Coach::operator=(const Coach& otherCoach)
 	this->groups = otherCoach.getGroups();
 	this->login = otherCoach.getLogin();
 	this->password = otherCoach.getPassword();
+	this->name = otherCoach.getName();
+	this->surname = otherCoach.getSurname();
 	return *this;
 }
 
@@ -188,7 +190,7 @@ void Coach::createGroup(string sportName)
 	ofstream T;
 	T.open("group" + to_string(Group::getAmountOfGroups() + 1) + ".txt", ofstream::out | ofstream::app);
 
-	T << sportName << endl << this->name + " " + this->surname
+	T << sportName << endl << this->name + " " + this->surname + " (" + this->login + ")"
 	  << endl; // for members -> name surname (login)
 
 	T.close();

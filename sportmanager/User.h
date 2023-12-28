@@ -21,6 +21,8 @@ public:
 	User(const User &);
 	virtual ~User();
 
+	string operator[](int index) const;
+
 	inline string getLogin() const;
 	inline string getPassword() const;
 	inline string getName() const;

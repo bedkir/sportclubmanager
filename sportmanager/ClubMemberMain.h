@@ -68,7 +68,7 @@ namespace sportmanager {
 				{
 					Button^ newButton = gcnew Button();
 
-					String^ buttonText = gcnew System::String(ClubMember::CM.getGroups()[i].c_str());
+					String^ buttonText = gcnew System::String(ClubMember::CM[i].c_str());
 					newButton->Text = buttonText;
 					newButton->Name = "button" + i.ToString();
 					newButton->Location = Point(x, y);

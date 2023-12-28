@@ -196,16 +196,17 @@ vector<string> ClubMember::showAvailableGroups()
 
 	F.close();
 
-	for (int i = 0; i < allGroups.size(); i++)
+	//RA iterator
+	vector<string>::iterator it1, it2;
+
+	for (it1 = allGroups.begin(); it1 != allGroups.end(); ++it1) 
 	{
 		bool isInside = false;
-		for (int j = 0; j < this->groups.size(); j++)
-		{
-			if (allGroups.at(i) == this->groups.at(j))
+		for (it2 = this->groups.begin(); it2 != this->groups.end(); ++it2)
+			if ((*it1) == (*it2))
 				isInside = true;
-		}
 		if (!isInside)
-			result.push_back(allGroups.at(i));
+			result.push_back((*it1));
 	}
 
 	return result;

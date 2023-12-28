@@ -4,6 +4,7 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+#include <regex>
 
 int Group::amountOfGroups = 0;
 
@@ -11,7 +12,7 @@ Group::Group()
 {
 }
 
-Group::Group(string sportName, string coach, vector<string>members)
+Group::Group(string sportName, Coach coach, vector<string>members)
 {
 	this->sportName = sportName;
 	this->coach = coach;
@@ -40,7 +41,7 @@ inline string Group::getGroupName() const
 	return this->groupName;
 }
 
-inline string Group::getCoach() const
+inline Coach Group::getCoach() const
 {
 	return this->coach;
 }
@@ -89,7 +90,7 @@ inline Group& Group::setGroupName(string groupName)
 	return *this;
 }
 
-inline Group& Group::setCoach(string coach)
+inline Group& Group::setCoach(const Coach& coach)
 {
 	this->coach = coach;
 	return *this;
@@ -114,7 +115,40 @@ void Group::fillGroupData(string groupName)
 	this->sportName = line;
 
 	getline(F, line);
-	this->coach = line;
+
+	regex loginRegex("\\(([^)]+)\\)");
+	smatch match;
+	regex_search(line, match, loginRegex);
+	string login = match[1];
+
+	//start
+	ifstream S;
+	S.open(login + ".txt", ofstream::out | ofstream::app);
+
+	string line1;
+
+
+	vector<string> data, coachGroups;
+	for (int i = 0; i < 4; i++)
+	{
+		getline(S, line1);
+		data.push_back(line1);
+	}
+
+	while (true)
+	{
+		getline(S, line1);
+		if (line1 == "") break;
+		coachGroups.push_back(line1);
+	}
+
+	S.close();
+
+	//stop
+
+	Coach tempCoach(data.at(0), data.at(1), data.at(2), data.at(3), coachGroups);
+	this->setCoach(tempCoach);
+	//this->coach = line;
 
 	vector<string> members;
 
