@@ -190,7 +190,7 @@ namespace sportmanager {
 				static_cast<System::Byte>(204)));
 			this->label1->Location = System::Drawing::Point(26, 32);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(111, 24);
+			this->label1->Size = System::Drawing::Size(146, 29);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Ваші групи:";
 			// 
@@ -231,10 +231,11 @@ namespace sportmanager {
 			this->otherGroupsPanel->Name = L"otherGroupsPanel";
 			this->otherGroupsPanel->Size = System::Drawing::Size(316, 356);
 			this->otherGroupsPanel->TabIndex = 4;
+			this->otherGroupsPanel->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &ClubMemberMain::otherGroupsPanel_Paint);
 			// 
 			// ClubMemberMain
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 17);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(789, 440);
 			this->Controls->Add(this->otherGroupsPanel);
@@ -283,5 +284,7 @@ namespace sportmanager {
 		BuildMyGroupsButtons();
 		BuildOtherGroupsButtons();
 	}
+private: System::Void otherGroupsPanel_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+}
 };
 }

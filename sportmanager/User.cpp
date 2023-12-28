@@ -94,13 +94,23 @@ void User::deleteMember(string groupName, string login, string name, string surn
 
 	string line;
 
+	int i = 0;
+	string groupSportName;
+
 	while (true)
 	{
 		getline(F, line);
+		if (i == 0)
+			groupSportName = line;
 		temp.push_back(line);
 		if (line == name + " " + surname + " (" + login + ")")
 			temp.pop_back();
-		else if (line == "") break;
+		else if (line == "")
+		{
+			temp.pop_back();
+			break;
+		}
+		i++;
 	}
 
 	F.close();
@@ -123,9 +133,13 @@ void User::deleteMember(string groupName, string login, string name, string surn
 	{
 		getline(T, line);
 		temp.push_back(line);
-		if (line == groupName)
+		if (line == groupName + " (" + groupSportName + ")")
 			temp.pop_back();
-		else if (line == "") break;
+		else if (line == "")
+		{
+			temp.pop_back();
+			break;
+		}
 	}
 
 	T.close();

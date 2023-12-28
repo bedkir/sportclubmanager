@@ -180,7 +180,7 @@ void ClubMember::getGroupsListFromFile()
 
 vector<string> ClubMember::showAvailableGroups()
 {
-	vector<string> myGroups, result;
+	vector<string> allGroups, result;
 
 	ifstream F;
 	F.open("groups.txt", ofstream::out | ofstream::app);
@@ -191,30 +191,21 @@ vector<string> ClubMember::showAvailableGroups()
 	{
 		getline(F, line);
 		if (line == "") break;
-		result.push_back(line);
+		allGroups.push_back(line);
 	}
 
 	F.close();
 
-	ifstream S;
-	S.open(this->login + ".txt", ofstream::out | ofstream::app);
-
-	while (true)
+	for (int i = 0; i < allGroups.size(); i++)
 	{
-		getline(S, line);
-		if (line == "") break;
-		myGroups.push_back(line);
-	}
-
-	S.close();
-
-	for (int i = 0; i < result.size(); i++)
-	{
-		for (int j = 0; j < myGroups.size(); j++)
+		bool isInside = false;
+		for (int j = 0; j < this->groups.size(); j++)
 		{
-			if (result.at(i) == myGroups.at(j))
-				result.erase(result.begin() + i);
+			if (allGroups.at(i) == this->groups.at(j))
+				isInside = true;
 		}
+		if (!isInside)
+			result.push_back(allGroups.at(i));
 	}
 
 	return result;
@@ -262,7 +253,7 @@ void ClubMember::enterTheGroup(string groupName, string fullGroupName)
 
 	T.close();
 
-	this->groups.push_back(groupName);
+	this->groups.push_back(fullGroupName);
 }
 
 Group ClubMember::groupInfo(string groupName)
