@@ -5,7 +5,6 @@ using namespace System::Windows::Forms;
 [STAThreadAttribute]
 void main(/*array<String^>^ args*/)
 {
-	Group::setAmountOfGroups();
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
 	sportmanager::MyForm form;

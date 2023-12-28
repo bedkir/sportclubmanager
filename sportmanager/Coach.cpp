@@ -65,6 +65,7 @@ bool containsCoach(string login)
 
 bool Coach::SignIn(string login, string password)
 {
+	Group::setAmountOfGroups();
 	string temp;
 
 	if (!containsCoach(login))
@@ -110,6 +111,7 @@ bool Coach::SignIn(string login, string password)
 
 bool Coach::SignUp(string login, string password, string secPassword, string name, string surname)
 {
+	Group::setAmountOfGroups();
 	if (password != secPassword)
 		return false;
 	

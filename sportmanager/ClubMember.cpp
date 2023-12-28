@@ -66,6 +66,7 @@ bool containsMember(string login)
 
 bool ClubMember::SignIn(string login, string password)
 {
+	Group::setAmountOfGroups();
 	string temp;
 
 	if (!containsMember(login))
@@ -111,6 +112,7 @@ bool ClubMember::SignIn(string login, string password)
 
 bool ClubMember::SignUp(string login, string password, string secPassword, string name, string surname, int birthYear)
 {
+	Group::setAmountOfGroups();
 	if (password != secPassword)
 		return false;
 
