@@ -31,12 +31,14 @@ Group::~Group()
 	this->members.clear();
 }
 
+// ++Group
 Group& Group::operator++()
 {
 	amountOfGroups++;
 	return *this;
 }
 
+// Group++
 Group Group::operator++(int)
 {
 	Group temp = *this;

@@ -16,14 +16,14 @@ protected:
 	vector<string> groups;
 
 public:
-	User();
-	User(string, string, string, string, vector<string>);
-	User(const User &);
-	virtual ~User();
+	User(); // конструктор за замовчуванням
+	User(string, string, string, string, vector<string>); // конструктор з параметрами
+	User(const User &); // конструктор копій
+	virtual ~User(); // віртуальний деструктор
 
-	string operator[](int index) const;
+	string operator[](int index) const; // оператор індексації
 
-	bool operator==(const User&) const;
+	bool operator==(const User&) const; // опертор порівняння
 
 	inline string getLogin() const;
 	inline string getPassword() const;
@@ -37,6 +37,7 @@ public:
 	inline User& setSurname(string);
 	inline User& setGroups(vector<string>&);
 
+	// чисто віртуальні методи
 	virtual bool SignIn(string, string) = 0;
 	
 	virtual void getGroupsListFromFile() = 0;

@@ -267,7 +267,7 @@ vector<string> Coach::sortMembers(string groupName)
 		result.push_back(line);
 	}
 
-	sort(result.begin(), result.end());
+	sort(result.begin(), result.end()); // стандартний алгоритм STL
 
 	F.close();
 

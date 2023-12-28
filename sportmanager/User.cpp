@@ -30,7 +30,7 @@ User::~User()
 
 string User::operator[](int index) const
 {
-	return this->groups.at(index);
+	return this->groups.at(index); // groups[index]
 }
 
 bool User::operator==(const User& other) const
